@@ -1,0 +1,114 @@
+<?php
+
+/**
+ * @file
+ * This module allows for building Galaxy tools through web interfaces.
+ */
+
+/**
+ * Load functions for editing webform components.
+ */
+require drupal_get_path('module', 'galaxy_tool_generator') . '/edit_components/edit_description.inc';
+
+/*
+ * Implements hook_webform_component_info().
+ */
+function galaxy_tool_generator_webform_component_info() {
+  $components = [];
+  $components['description'] = [
+    'label' => 'tool->description',
+  ];
+  $components['version_command'] = [
+    'label' => 'tool->version_command',
+  ];
+  $components['command'] = [
+    'label' => 'tool->command',
+  ];
+  $components['inputs'] = [
+    'label' => 'tool->inputs',
+  ];
+  $components['inputs_section'] = [
+    'label' => 'tool->inputs->section',
+  ];
+  $components['inputs_repeat'] = [
+    'label' => 'tool->inputs->repeat',
+  ];
+  $components['inputs_conditional'] = [
+    'label' => 'tool->inputs->conditional',
+  ];
+  $components['inputs_conditional_when'] = [
+    'label' => 'tool->inputs->conditional->when',
+  ];
+  $components['inputs_param'] = [
+    'label' => 'tool->inputs->param',
+  ];
+  $components['inputs_param_validator'] = [
+    'label' => 'tool->inputs->param->validator',
+  ];
+  $components['inputs_param_option'] = [
+    'label' => 'tool->inputs->param->option',
+  ];
+  $components['inputs_param_conversion'] = [
+    'label' => 'tool->inputs->param->conversion',
+  ];
+  $components['inputs_param_options'] = [
+    'label' => 'tool->inputs->param->options',
+  ];
+  $components['inputs_param_options_column'] = [
+    'label' => 'tool->inputs->param->options->column',
+  ];
+  $components['inputs_param_options_filter'] = [
+    'label' => 'tool->inputs->param->options->filter',
+  ];
+  $components['inputs_param_sanitizer'] = [
+    'label' => 'tool->inputs->param->sanitizer',
+  ];
+  $components['inputs_param_sanitizer_valid'] = [
+    'label' => 'tool->inputs->param->sanitizer->valid',
+  ];
+  $components['inputs_param_sanitizer_valid_add'] = [
+    'label' => 'tool->inputs->param->sanitizer->valid->add',
+  ];
+  $components['inputs_param_sanitizer_valid_remove'] = [
+    'label' => 'tool->inputs->param->sanitizer->valid->remove',
+  ];
+  $components['inputs_param_sanitizer_mapping'] = [
+    'label' => 'tool->inputs->param->sanitizer->mapping',
+  ];
+  $components['inputs_param_sanitizer_mapping_add'] = [
+    'label' => 'tool->inputs->param->sanitizer->mapping->add',
+  ];
+  $components['inputs_param_sanitizer_mapping_remove'] = [
+    'label' => 'tool->inputs->param->sanitizer->mapping->remove',
+  ];
+  $components['configfiles'] = [
+    'label' => 'tool->configfiles',
+  ];
+  $components['configfiles_configfile'] = [
+    'label' => 'tool->configfiles_configfile',
+  ];
+  $components['configfiles_inputs'] = [
+    'label' => 'tool->configfiles_inputs',
+  ];
+  $components['environment_variables'] = [
+    'label' => 'tool->environment_variables',
+  ];
+  $components['environment_variables_environment_variable'] = [
+    'label' => 'tool->environment_variables->environment_variable',
+  ];
+
+
+  return $components;
+}
+
+/**
+ * Implements hook_form_FORM_ID_alter().
+ */
+function galaxy_tool_generator_form_webform_component_edit_form_alter(&$form, &$form_state, $form_id) {
+  $component = $form['name']['#default_value'];
+  switch ($component) {
+    case 'description':
+      edit_component_description($form);
+      break;
+  }
+}
