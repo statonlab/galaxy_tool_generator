@@ -32,6 +32,9 @@ function galaxy_tool_generator_webform_component_info() {
   ];
   $components['inputs'] = [
     'label' => 'tool->inputs',
+    'features' => [
+      'group' => TRUE,
+    ],
     'file' => 'components/inputs.inc',
   ];
   $components['inputs_section'] = [

@@ -29,6 +29,7 @@ function _webform_render_inputs($component, $value = NULL, $filter = TRUE, $subm
   $form['inputs'] = [
     '#type' => 'fieldset',
     '#title' => $component['type'],
+    '#attributes' => ['class' => ['webform-component-fieldset']],
   ];
   if(!empty($component['extra']['attributes'])) {
     $tag_value_pairs = '';
@@ -41,7 +42,9 @@ function _webform_render_inputs($component, $value = NULL, $filter = TRUE, $subm
   $form['inputs']['inputs_xml'] = [
     '#markup' => '&lt;inputs ' . $tag_value_pairs . '&gt;&lt;/inputs&gt;',
   ];
-  return $form;
+
+  // returning $form breaks components-grouping. it has to return $form['inputs']
+  return $form['inputs'];
 }
 
 
