@@ -1,17 +1,11 @@
 <?php
 
 /**
- * @file
- * define functions to edit webform components defined in this module.
- */
-
-/**
  * edit component: description
  */
 function edit_component_description(&$form) {
   unset($form['validation']);
   unset($form['display']);
-  //unset($form['extra']['description']);
   $form['name'] = [
     '#type' => 'value',
     '#value' => $form['name']['#default_value'],

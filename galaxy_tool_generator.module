@@ -9,6 +9,9 @@
  * Load functions for editing webform components.
  */
 require drupal_get_path('module', 'galaxy_tool_generator') . '/edit_components/edit_description.inc';
+require drupal_get_path('module', 'galaxy_tool_generator') . '/edit_components/edit_version_command.inc';
+require drupal_get_path('module', 'galaxy_tool_generator') . '/edit_components/edit_inputs.inc';
+
 
 /*
  * Implements hook_webform_component_info().
@@ -17,15 +20,19 @@ function galaxy_tool_generator_webform_component_info() {
   $components = [];
   $components['description'] = [
     'label' => 'tool->description',
+    'file' => 'components/description.inc',
   ];
   $components['version_command'] = [
     'label' => 'tool->version_command',
+    'file' => 'components/version_command.inc',
   ];
   $components['command'] = [
     'label' => 'tool->command',
+    'file' => 'components/command.inc',
   ];
   $components['inputs'] = [
     'label' => 'tool->inputs',
+    'file' => 'components/inputs.inc',
   ];
   $components['inputs_section'] = [
     'label' => 'tool->inputs->section',
@@ -105,10 +112,16 @@ function galaxy_tool_generator_webform_component_info() {
  * Implements hook_form_FORM_ID_alter().
  */
 function galaxy_tool_generator_form_webform_component_edit_form_alter(&$form, &$form_state, $form_id) {
-  $component = $form['name']['#default_value'];
+  $component = $form['type']['#value'];
   switch ($component) {
     case 'description':
       edit_component_description($form);
+      break;
+    case 'version_command':
+      edit_component_version_command($form);
+      break;
+    case 'inputs':
+      edit_component_inputs($form);
       break;
   }
 }
