@@ -35,7 +35,7 @@ function _webform_render_inputs_conditional($component, $value = NULL, $filter =
     }
   }
   $form['inputs_conditional']['inputs_conditional_xml'] = [
-    '#markup' => '&lt;inputs ' . $tag_value_pairs . '&gt;&lt;/inputs&gt;',
+    '#markup' => '&lt;<span style="color: #19B5FE"><b>conditional</b></span> ' . $tag_value_pairs . '&gt;&lt;/<span style="color: #19B5FE"><b>conditional</b></span>&gt;',
   ];
 
   // returning $form breaks components-grouping. it has to return $form['inputs']

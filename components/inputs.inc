@@ -35,7 +35,7 @@ function _webform_render_inputs($component, $value = NULL, $filter = TRUE, $subm
     }
   }
   $form['inputs']['inputs_xml'] = [
-    '#markup' => '&lt;inputs ' . $tag_value_pairs . '&gt;&lt;/inputs&gt;',
+    '#markup' => '&lt;<span style="color: #19B5FE"><b>inputs</b></span> ' . $tag_value_pairs . '&gt;&lt;/<span style="color: #19B5FE"><b>inputs</b></span>&gt;',
   ];
 
   // returning $form breaks components-grouping. it has to return $form['inputs']

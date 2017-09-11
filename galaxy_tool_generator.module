@@ -14,6 +14,8 @@ require drupal_get_path('module', 'galaxy_tool_generator') . '/edit_components/e
 require drupal_get_path('module', 'galaxy_tool_generator') . '/edit_components/edit_inputs_section.inc';
 require drupal_get_path('module', 'galaxy_tool_generator') . '/edit_components/edit_inputs_repeat.inc';
 require drupal_get_path('module', 'galaxy_tool_generator') . '/edit_components/edit_inputs_conditional.inc';
+require drupal_get_path('module', 'galaxy_tool_generator') . '/edit_components/edit_inputs_conditional_when.inc';
+
 
 
 
@@ -64,6 +66,7 @@ function galaxy_tool_generator_webform_component_info() {
   ];
   $components['inputs_conditional_when'] = [
     'label' => 'tool->inputs->conditional->when',
+    'file' => 'components/inputs_conditional_when.inc',
   ];
   $components['inputs_param'] = [
     'label' => 'tool->inputs->param',
@@ -150,6 +153,9 @@ function galaxy_tool_generator_form_webform_component_edit_form_alter(&$form, &$
       break;
     case 'inputs_conditional':
       edit_component_inputs_conditional($form);
+      break;
+    case 'inputs_conditional_when':
+      edit_component_inputs_conditional_when($form);
       break;
   }
 }
