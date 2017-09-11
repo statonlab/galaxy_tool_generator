@@ -11,6 +11,10 @@
 require drupal_get_path('module', 'galaxy_tool_generator') . '/edit_components/edit_description.inc';
 require drupal_get_path('module', 'galaxy_tool_generator') . '/edit_components/edit_version_command.inc';
 require drupal_get_path('module', 'galaxy_tool_generator') . '/edit_components/edit_inputs.inc';
+require drupal_get_path('module', 'galaxy_tool_generator') . '/edit_components/edit_inputs_section.inc';
+require drupal_get_path('module', 'galaxy_tool_generator') . '/edit_components/edit_inputs_repeat.inc';
+require drupal_get_path('module', 'galaxy_tool_generator') . '/edit_components/edit_inputs_conditional.inc';
+
 
 
 /*
@@ -39,12 +43,24 @@ function galaxy_tool_generator_webform_component_info() {
   ];
   $components['inputs_section'] = [
     'label' => 'tool->inputs->section',
+    'features' => [
+      'group' => TRUE,
+    ],
+    'file' => 'components/inputs_section.inc',
   ];
   $components['inputs_repeat'] = [
     'label' => 'tool->inputs->repeat',
+    'features' => [
+      'group' => TRUE,
+    ],
+    'file' => 'components/inputs_repeat.inc',
   ];
   $components['inputs_conditional'] = [
     'label' => 'tool->inputs->conditional',
+    'features' => [
+      'group' => TRUE,
+    ],
+    'file' => 'components/inputs_conditional.inc',
   ];
   $components['inputs_conditional_when'] = [
     'label' => 'tool->inputs->conditional->when',
@@ -125,6 +141,15 @@ function galaxy_tool_generator_form_webform_component_edit_form_alter(&$form, &$
       break;
     case 'inputs':
       edit_component_inputs($form);
+      break;
+    case 'inputs_section':
+      edit_component_inputs_section($form);
+      break;
+    case 'inputs_repeat':
+      edit_component_inputs_repeat($form);
+      break;
+    case 'inputs_conditional':
+      edit_component_inputs_conditional($form);
       break;
   }
 }

@@ -1,11 +1,6 @@
 <?php
 
 /**
- * @file
- * version_command component.
- */
-
-/**
  * Implements _webform_defaults_component().
  */
 function _webform_defaults_inputs() {
@@ -31,11 +26,11 @@ function _webform_render_inputs($component, $value = NULL, $filter = TRUE, $subm
     '#title' => $component['type'],
     '#attributes' => ['class' => ['webform-component-fieldset']],
   ];
-  if(!empty($component['extra']['attributes'])) {
+  if (!empty($component['extra']['attributes'])) {
     $tag_value_pairs = '';
-    foreach ($component['extra']['attributes'] as $tag=>$value) {
-      if($value != null) {
-        $tag_value_pairs .=  $tag . '="'. $value. '" ';
+    foreach ($component['extra']['attributes'] as $tag => $value) {
+      if ($value != NULL) {
+        $tag_value_pairs .= '<span style="color: #FF5666"><b>'. $tag . '</b></span>="' . $value . '" ';
       }
     }
   }
@@ -46,6 +41,4 @@ function _webform_render_inputs($component, $value = NULL, $filter = TRUE, $subm
   // returning $form breaks components-grouping. it has to return $form['inputs']
   return $form['inputs'];
 }
-
-
 
