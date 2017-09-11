@@ -23,7 +23,7 @@ function _webform_defaults_inputs_repeat() {
 function _webform_render_inputs_repeat($component, $value = NULL, $filter = TRUE, $submission = NULL) {
   $form['inputs_repeat'] = [
     '#type' => 'fieldset',
-    '#title' => $component['type'],
+    '#title' => '<b>tool > inputs > repeat</b>',
     '#attributes' => ['class' => ['webform-component-fieldset']],
   ];
   if(!empty($component['extra']['attributes'])) {

@@ -27,6 +27,10 @@ function edit_component_inputs_param_type_text(&$form) {
   }
 
   // text param specific attributes
+  $form['extra']['attributes']['type'] = [
+    '#type' => 'value',
+    '#value' => 'text',
+  ];
   $form['extra']['attributes']['area'] = [
     '#type' => 'radios',
     '#title' => t('Area'),

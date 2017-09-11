@@ -23,7 +23,7 @@ function _webform_defaults_inputs_conditional() {
 function _webform_render_inputs_conditional($component, $value = NULL, $filter = TRUE, $submission = NULL) {
   $form['inputs_conditional'] = [
     '#type' => 'fieldset',
-    '#title' => $component['type'],
+    '#title' => '<b>tool > inputs > conditional</b>',
     '#attributes' => ['class' => ['webform-component-fieldset']],
   ];
   if(!empty($component['extra']['attributes'])) {

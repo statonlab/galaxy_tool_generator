@@ -23,7 +23,7 @@ function _webform_defaults_inputs_section() {
 function _webform_render_inputs_section($component, $value = NULL, $filter = TRUE, $submission = NULL) {
   $form['inputs_section'] = [
     '#type' => 'fieldset',
-    '#title' => $component['type'],
+    '#title' => '<b>tool > inputs > section</b>',
     '#attributes' => ['class' => ['webform-component-fieldset']],
   ];
   if(!empty($component['extra']['attributes'])) {

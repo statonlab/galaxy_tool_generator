@@ -29,7 +29,7 @@ function _webform_defaults_description() {
 function _webform_render_description($component, $value = NULL, $filter = TRUE, $submission = NULL) {
   $form['description'] = [
     '#type' => 'fieldset',
-    '#title' => $component['type'],
+    '#title' => '<b>tool > description</b>',
   ];
   $form['description']['description_xml'] = [
     '#markup' => '&lt;<span style="color: #19B5FE"><b>description</b></span>&gt;' . $component['extra']['description_value'] . '&lt;/<span style="color: #19B5FE"><b>description</b></span>&gt;',

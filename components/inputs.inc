@@ -23,7 +23,7 @@ function _webform_defaults_inputs() {
 function _webform_render_inputs($component, $value = NULL, $filter = TRUE, $submission = NULL) {
   $form['inputs'] = [
     '#type' => 'fieldset',
-    '#title' => $component['type'],
+    '#title' => '<b>tool > inputs</b>',
     '#attributes' => ['class' => ['webform-component-fieldset']],
   ];
   if (!empty($component['extra']['attributes'])) {
