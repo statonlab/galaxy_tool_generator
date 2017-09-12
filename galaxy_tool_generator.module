@@ -16,9 +16,6 @@ require drupal_get_path('module', 'galaxy_tool_generator') . '/edit_components/e
 require drupal_get_path('module', 'galaxy_tool_generator') . '/edit_components/edit_inputs_conditional.inc';
 require drupal_get_path('module', 'galaxy_tool_generator') . '/edit_components/edit_inputs_conditional_when.inc';
 require drupal_get_path('module', 'galaxy_tool_generator') . '/edit_components/edit_params/edit_param_type_text.inc';
-require drupal_get_path('module', 'galaxy_tool_generator') . '/edit_components/edit_params/edit_param_type_select.inc';
-
-
 
 
 
@@ -63,9 +60,6 @@ function galaxy_tool_generator_webform_component_info() {
   ];
   $components['inputs_conditional'] = [
     'label' => 'tool->inputs->conditional',
-    'features' => [
-      'group' => TRUE,
-    ],
     'file' => 'components/inputs_conditional.inc',
   ];
   $components['inputs_conditional_when'] = [
@@ -80,71 +74,121 @@ function galaxy_tool_generator_webform_component_info() {
   ];
   $components['inputs_param_type_text'] = [
     'label' => 'tool->inputs->param(type: text)',
+    'features' => [
+      'group' => TRUE,
+    ],
     'file' => 'components/params/param_type_text.inc',
   ];
   $components['inputs_param_type_integer'] = [
     'label' => 'tool->inputs->param(type: integer)',
+    'features' => [
+      'group' => TRUE,
+    ],
     'file' => 'components/params/param_type_integer.inc',
   ];
   $components['inputs_param_type_float'] = [
     'label' => 'tool->inputs->param(type: float)',
+    'features' => [
+      'group' => TRUE,
+    ],
     'file' => 'components/params/param_type_float.inc',
   ];
   $components['inputs_param_type_boolean'] = [
     'label' => 'tool->inputs->param(type: boolean)',
+    'features' => [
+      'group' => TRUE,
+    ],
     'file' => 'components/params/param_type_boolean.inc',
   ];
   $components['inputs_param_type_genomebuild'] = [
     'label' => 'tool->inputs->param(type: genomebuild)',
+    'features' => [
+      'group' => TRUE,
+    ],
     'file' => 'components/params/param_type_genomebuild.inc',
   ];
   $components['inputs_param_type_select'] = [
     'label' => 'tool->inputs->param(type: select)',
-    'conditional_type' => 'select',
+    'features' => [
+      'group' => TRUE,
+    ],
     'file' => 'components/params/param_type_select.inc',
   ];
   $components['inputs_param_type_color'] = [
     'label' => 'tool->inputs->param(type: color)',
+    'features' => [
+      'group' => TRUE,
+    ],
     'file' => 'components/params/param_type_color.inc',
   ];
   $components['inputs_param_type_data_column'] = [
     'label' => 'tool->inputs->param(type: data_column)',
+    'features' => [
+      'group' => TRUE,
+    ],
     'file' => 'components/params/param_type_data_column.inc',
   ];
   $components['inputs_param_type_hidden'] = [
     'label' => 'tool->inputs->param(type: hidden)',
+    'features' => [
+      'group' => TRUE,
+    ],
     'file' => 'components/params/param_type_hidden.inc',
   ];
   $components['inputs_param_type_hidden_data'] = [
     'label' => 'tool->inputs->param(type: hidden_data)',
+    'features' => [
+      'group' => TRUE,
+    ],
     'file' => 'components/params/param_type_hidden_data.inc',
   ];
   $components['inputs_param_type_baseurl'] = [
     'label' => 'tool->inputs->param(type: baseurl)',
+    'features' => [
+      'group' => TRUE,
+    ],
     'file' => 'components/params/param_type_baseurl.inc',
   ];
   $components['inputs_param_type_file'] = [
     'label' => 'tool->inputs->param(type: file)',
+    'features' => [
+      'group' => TRUE,
+    ],
     'file' => 'components/params/param_type_file.inc',
   ];
   $components['inputs_param_type_ftpfile'] = [
     'label' => 'tool->inputs->param(type: ftpfile)',
+    'features' => [
+      'group' => TRUE,
+    ],
     'file' => 'components/params/param_type_ftpfile.inc',
   ];
   $components['inputs_param_type_data'] = [
     'label' => 'tool->inputs->param(type: data)',
+    'features' => [
+      'group' => TRUE,
+    ],
     'file' => 'components/params/param_type_data.inc',
   ];
   $components['inputs_param_type_data_collection'] = [
     'label' => 'tool->inputs->param(type: data_collection)',
+    'features' => [
+      'group' => TRUE,
+    ],
     'file' => 'components/params/param_type_data_collection.inc',
   ];
   $components['inputs_param_type_library_data'] = [
     'label' => 'tool->inputs->param(type: library_data)',
+    'features' => [
+      'group' => TRUE,
+    ],
     'file' => 'components/params/param_type_library_data.inc',
   ];
   $components['inputs_param_type_drill_down'] = [
     'label' => 'tool->inputs->param(type: drill_down)',
+    'features' => [
+      'group' => TRUE,
+    ],
     'file' => 'components/params/param_type_drill_down.inc',
   ];
   //=========================== param type ends ================================
@@ -153,6 +197,7 @@ function galaxy_tool_generator_webform_component_info() {
   ];
   $components['inputs_param_option'] = [
     'label' => 'tool->inputs->param->option',
+    'file' => 'components/inputs_param_option.inc'
   ];
   $components['inputs_param_conversion'] = [
     'label' => 'tool->inputs->param->conversion',
@@ -239,6 +284,9 @@ function galaxy_tool_generator_form_webform_component_edit_form_alter(&$form, &$
       break;
     case 'inputs_param_type_select':
       edit_component_inputs_param_type_select($form);
+      break;
+    case 'inputs_param_option':
+      edit_component_inputs_param_option($form);
       break;
   }
 }
