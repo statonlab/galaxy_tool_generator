@@ -26,18 +26,27 @@ require drupal_get_path('module', 'galaxy_tool_generator') . '/edit_components/e
  */
 function galaxy_tool_generator_webform_component_info() {
   $components = [];
-  $components['description'] = [
+  $components['tool'] = [
+    'label' => 'tool',
+    'features' => [
+      'group' => TRUE,
+    ],
+    'file' => 'components/tool.inc',
+  ];
+  $components['tool_description'] = [
     'label' => 'tool->description',
-    'file' => 'components/description.inc',
+    'file' => 'components/tool_description.inc',
   ];
-  $components['version_command'] = [
+  $components['tool_version_command'] = [
     'label' => 'tool->version_command',
-    'file' => 'components/version_command.inc',
+    'file' => 'components/tool_version_command.inc',
   ];
-  $components['command'] = [
+  $components['tool_command'] = [
     'label' => 'tool->command',
-    'file' => 'components/command.inc',
+    'file' => 'components/tool_command.inc',
   ];
+
+
   $components['inputs'] = [
     'label' => 'tool->inputs',
     'features' => [
@@ -259,11 +268,17 @@ function galaxy_tool_generator_webform_component_info() {
 function galaxy_tool_generator_form_webform_component_edit_form_alter(&$form, &$form_state, $form_id) {
   $component = $form['type']['#value'];
   switch ($component) {
-    case 'description':
-      edit_component_description($form);
+    case 'tool':
+      edit_component_tool($form);
       break;
-    case 'version_command':
-      edit_component_version_command($form);
+    case 'tool_description':
+      edit_component_tool_description($form);
+      break;
+    case 'tool_version_command':
+      edit_component_tool_version_command($form);
+      break;
+    case 'tool_command':
+      edit_component_tool_command($form);
       break;
     case 'inputs':
       edit_component_inputs($form);
