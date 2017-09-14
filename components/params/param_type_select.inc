@@ -12,6 +12,7 @@ function _webform_defaults_inputs_param_type_select() {
     'weight' => 0,
     'extra' => [
       'attributes' => '',
+      'private',
     ],
   ];
 }
@@ -28,8 +29,12 @@ function _webform_render_inputs_param_type_select($component, $value = NULL, $fi
   if (!empty($component['extra']['attributes'])) {
     $tag_value_pairs = '';
     foreach ($component['extra']['attributes'] as $tag => $value) {
-      if ($value != NULL & $tag != 'options') {
-        $tag_value_pairs .= '<span style="color: #FF5666"><b>' . $tag . '</b></span>="' . $value . '" ';
+      if ($value != NULL) {
+        if($tag == 'name') {
+          $tag_value_pairs .= '<span style="color: #FF5666"><b>' . $tag . '</b></span>="' . $value . '" ';
+        } else {
+          $tag_value_pairs .= '<span style="color: #42D9C8"><b>' . $tag . '</b></span>="' . $value . '" ';
+        }
       }
     }
   }

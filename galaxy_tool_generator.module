@@ -5,11 +5,12 @@
  * This module allows for building Galaxy tools through web interfaces.
  */
 
-/**
+require drupal_get_path('module', 'galaxy_tool_generator') . '/galaxy_tool_generator.api.inc';
+  /**
  * Load functions for editing webform components.
  */
 require drupal_get_path('module', 'galaxy_tool_generator') . '/edit_components/edit_description.inc';
-require drupal_get_path('module', 'galaxy_tool_generator') . '/edit_components/edit_version_command.inc';
+//require drupal_get_path('module', 'galaxy_tool_generator') . '/edit_components/edit_version_command.inc';
 require drupal_get_path('module', 'galaxy_tool_generator') . '/edit_components/edit_inputs.inc';
 require drupal_get_path('module', 'galaxy_tool_generator') . '/edit_components/edit_inputs_section.inc';
 require drupal_get_path('module', 'galaxy_tool_generator') . '/edit_components/edit_inputs_repeat.inc';
@@ -284,6 +285,12 @@ function galaxy_tool_generator_form_webform_component_edit_form_alter(&$form, &$
       break;
     case 'inputs_param_type_select':
       edit_component_inputs_param_type_select($form);
+      break;
+    case 'inputs_param_type_integer':
+      edit_component_inputs_param_type_integer($form);
+      break;
+    case 'inputs_param_type_float':
+      edit_component_inputs_param_type_float($form);
       break;
     case 'inputs_param_option':
       edit_component_inputs_param_option($form);

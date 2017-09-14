@@ -29,7 +29,11 @@ function _webform_render_inputs_param_type_text($component, $value = NULL, $filt
     $tag_value_pairs = '';
     foreach ($component['extra']['attributes'] as $tag => $value) {
       if ($value != NULL) {
-        $tag_value_pairs .= '<span style="color: #FF5666"><b>' . $tag . '</b></span>="' . $value . '" ';
+        if($tag == 'name') {
+          $tag_value_pairs .= '<span style="color: #FF5666"><b>' . $tag . '</b></span>="' . $value . '" ';
+        } else {
+          $tag_value_pairs .= '<span style="color: #42D9C8"><b>' . $tag . '</b></span>="' . $value . '" ';
+        }
       }
     }
   }
