@@ -31,44 +31,50 @@ function galaxy_tool_generator_webform_component_info() {
     'label' => 'tool->command',
     'file' => 'components/tool_command.inc',
   ];
-
-
-  $components['inputs'] = [
+  $components['tool_inputs'] = [
     'label' => 'tool->inputs',
     'features' => [
       'group' => TRUE,
     ],
-    'file' => 'components/inputs.inc',
+    'file' => 'components/tool_inputs.inc',
   ];
-  $components['inputs_section'] = [
+  $components['tool_inputs_section'] = [
     'label' => 'tool->inputs->section',
     'features' => [
       'group' => TRUE,
     ],
-    'file' => 'components/inputs_section.inc',
+    'file' => 'components/tool_inputs_section.inc',
   ];
-  $components['inputs_repeat'] = [
+
+  $components['tool_inputs_repeat'] = [
     'label' => 'tool->inputs->repeat',
     'features' => [
       'group' => TRUE,
     ],
-    'file' => 'components/inputs_repeat.inc',
+    'file' => 'components/tool_inputs_repeat.inc',
   ];
-  $components['inputs_conditional'] = [
+  $components['tool_inputs_conditional'] = [
     'label' => 'tool->inputs->conditional',
-    'file' => 'components/inputs_conditional.inc',
+    'features' => [
+      'group' => TRUE,
+    ],
+    'file' => 'components/tool_inputs_conditional.inc',
   ];
-  $components['inputs_conditional_when'] = [
+  $components['tool_inputs_conditional_when'] = [
     'label' => 'tool->inputs->conditional->when',
-    'file' => 'components/inputs_conditional_when.inc',
+    'file' => 'components/tool_inputs_conditional_when.inc',
   ];
   //=========================== param type starts ==============================
   // param is the most important element in galaxy tool configure file.
   // let's create a webform component for each type of param.
-  $components['inputs_param'] = [
+  $components['tool_inputs_param'] = [
     'label' => 'tool->inputs->param',
+    'features' => [
+      'group' => TRUE,
+    ],
+    'file' => 'components/tool_inputs_param.inc',
   ];
-  $components['inputs_param_type_text'] = [
+  $components['tool_inputs_param_type_text'] = [
     'label' => 'tool->inputs->param(type: text)',
     'features' => [
       'group' => TRUE,
@@ -266,23 +272,23 @@ function galaxy_tool_generator_form_webform_component_edit_form_alter(&$form, &$
     case 'tool_command':
       edit_component_tool_command($form);
       break;
-    case 'inputs':
-      edit_component_inputs($form);
+    case 'tool_inputs':
+      edit_component_tool_inputs($form);
       break;
-    case 'inputs_section':
-      edit_component_inputs_section($form);
+    case 'tool_inputs_section':
+      edit_component_tool_inputs_section($form);
       break;
-    case 'inputs_repeat':
-      edit_component_inputs_repeat($form);
+    case 'tool_inputs_repeat':
+      edit_component_tool_inputs_repeat($form);
       break;
-    case 'inputs_conditional':
-      edit_component_inputs_conditional($form);
+    case 'tool_inputs_conditional':
+      edit_component_tool_inputs_conditional($form);
       break;
-    case 'inputs_conditional_when':
-      edit_component_inputs_conditional_when($form);
+    case 'tool_inputs_conditional_when':
+      edit_component_tool_inputs_conditional_when($form);
       break;
-    case 'inputs_param_type_text':
-      edit_component_inputs_param_type_text($form);
+    case 'tool_inputs_param_type_text':
+      edit_component_tool_inputs_param_type_text($form);
       break;
     case 'inputs_param_type_select':
       edit_component_inputs_param_type_select($form);
