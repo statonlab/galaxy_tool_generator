@@ -45,7 +45,6 @@ function galaxy_tool_generator_webform_component_info() {
     ],
     'file' => 'components/tool_inputs_section.inc',
   ];
-
   $components['tool_inputs_repeat'] = [
     'label' => 'tool->inputs->repeat',
     'features' => [
@@ -76,181 +75,41 @@ function galaxy_tool_generator_webform_component_info() {
   ];
   $components['tool_inputs_param_type_text'] = [
     'label' => 'tool->inputs->param(type: text)',
-    'features' => [
-      'group' => TRUE,
-    ],
     'file' => 'components/params/param_type_text.inc',
   ];
-  $components['inputs_param_type_integer'] = [
+  $components['tool_inputs_param_type_integer'] = [
     'label' => 'tool->inputs->param(type: integer)',
-    'features' => [
-      'group' => TRUE,
-    ],
     'file' => 'components/params/param_type_integer.inc',
   ];
-  $components['inputs_param_type_float'] = [
+  $components['tool_inputs_param_type_float'] = [
     'label' => 'tool->inputs->param(type: float)',
-    'features' => [
-      'group' => TRUE,
-    ],
     'file' => 'components/params/param_type_float.inc',
   ];
-  $components['inputs_param_type_boolean'] = [
+  $components['tool_inputs_param_type_boolean'] = [
     'label' => 'tool->inputs->param(type: boolean)',
-    'features' => [
-      'group' => TRUE,
-    ],
     'file' => 'components/params/param_type_boolean.inc',
   ];
-  $components['inputs_param_type_genomebuild'] = [
-    'label' => 'tool->inputs->param(type: genomebuild)',
-    'features' => [
-      'group' => TRUE,
-    ],
-    'file' => 'components/params/param_type_genomebuild.inc',
+  $components['tool_inputs_param_type_data'] = [
+    'label' => 'tool->inputs->param(type: data)',
+    'file' => 'components/params/param_type_data.inc',
   ];
-  $components['inputs_param_type_select'] = [
+  $components['tool_inputs_param_type_select'] = [
     'label' => 'tool->inputs->param(type: select)',
     'features' => [
       'group' => TRUE,
     ],
     'file' => 'components/params/param_type_select.inc',
   ];
-  $components['inputs_param_type_color'] = [
-    'label' => 'tool->inputs->param(type: color)',
-    'features' => [
-      'group' => TRUE,
-    ],
-    'file' => 'components/params/param_type_color.inc',
-  ];
-  $components['inputs_param_type_data_column'] = [
-    'label' => 'tool->inputs->param(type: data_column)',
-    'features' => [
-      'group' => TRUE,
-    ],
-    'file' => 'components/params/param_type_data_column.inc',
-  ];
-  $components['inputs_param_type_hidden'] = [
-    'label' => 'tool->inputs->param(type: hidden)',
-    'features' => [
-      'group' => TRUE,
-    ],
-    'file' => 'components/params/param_type_hidden.inc',
-  ];
-  $components['inputs_param_type_hidden_data'] = [
-    'label' => 'tool->inputs->param(type: hidden_data)',
-    'features' => [
-      'group' => TRUE,
-    ],
-    'file' => 'components/params/param_type_hidden_data.inc',
-  ];
-  $components['inputs_param_type_baseurl'] = [
-    'label' => 'tool->inputs->param(type: baseurl)',
-    'features' => [
-      'group' => TRUE,
-    ],
-    'file' => 'components/params/param_type_baseurl.inc',
-  ];
-  $components['inputs_param_type_file'] = [
-    'label' => 'tool->inputs->param(type: file)',
-    'features' => [
-      'group' => TRUE,
-    ],
-    'file' => 'components/params/param_type_file.inc',
-  ];
-  $components['inputs_param_type_ftpfile'] = [
-    'label' => 'tool->inputs->param(type: ftpfile)',
-    'features' => [
-      'group' => TRUE,
-    ],
-    'file' => 'components/params/param_type_ftpfile.inc',
-  ];
-  $components['inputs_param_type_data'] = [
-    'label' => 'tool->inputs->param(type: data)',
-    'features' => [
-      'group' => TRUE,
-    ],
-    'file' => 'components/params/param_type_data.inc',
-  ];
-  $components['inputs_param_type_data_collection'] = [
-    'label' => 'tool->inputs->param(type: data_collection)',
-    'features' => [
-      'group' => TRUE,
-    ],
-    'file' => 'components/params/param_type_data_collection.inc',
-  ];
-  $components['inputs_param_type_library_data'] = [
-    'label' => 'tool->inputs->param(type: library_data)',
-    'features' => [
-      'group' => TRUE,
-    ],
-    'file' => 'components/params/param_type_library_data.inc',
-  ];
-  $components['inputs_param_type_drill_down'] = [
-    'label' => 'tool->inputs->param(type: drill_down)',
-    'features' => [
-      'group' => TRUE,
-    ],
-    'file' => 'components/params/param_type_drill_down.inc',
-  ];
+  // TODO: param types
+  //  data_column
+  //  drill_down
+  //  data_collection
+  //  color
   //=========================== param type ends ================================
-  $components['inputs_param_validator'] = [
+  $components['tool_inputs_param_validator'] = [
     'label' => 'tool->inputs->param->validator',
+    'file' => 'components/tool_inputs_param_validator.inc',
   ];
-  $components['inputs_param_option'] = [
-    'label' => 'tool->inputs->param->option',
-    'file' => 'components/inputs_param_option.inc'
-  ];
-  $components['inputs_param_conversion'] = [
-    'label' => 'tool->inputs->param->conversion',
-  ];
-  $components['inputs_param_options'] = [
-    'label' => 'tool->inputs->param->options',
-  ];
-  $components['inputs_param_options_column'] = [
-    'label' => 'tool->inputs->param->options->column',
-  ];
-  $components['inputs_param_options_filter'] = [
-    'label' => 'tool->inputs->param->options->filter',
-  ];
-  $components['inputs_param_sanitizer'] = [
-    'label' => 'tool->inputs->param->sanitizer',
-  ];
-  $components['inputs_param_sanitizer_valid'] = [
-    'label' => 'tool->inputs->param->sanitizer->valid',
-  ];
-  $components['inputs_param_sanitizer_valid_add'] = [
-    'label' => 'tool->inputs->param->sanitizer->valid->add',
-  ];
-  $components['inputs_param_sanitizer_valid_remove'] = [
-    'label' => 'tool->inputs->param->sanitizer->valid->remove',
-  ];
-  $components['inputs_param_sanitizer_mapping'] = [
-    'label' => 'tool->inputs->param->sanitizer->mapping',
-  ];
-  $components['inputs_param_sanitizer_mapping_add'] = [
-    'label' => 'tool->inputs->param->sanitizer->mapping->add',
-  ];
-  $components['inputs_param_sanitizer_mapping_remove'] = [
-    'label' => 'tool->inputs->param->sanitizer->mapping->remove',
-  ];
-  $components['configfiles'] = [
-    'label' => 'tool->configfiles',
-  ];
-  $components['configfiles_configfile'] = [
-    'label' => 'tool->configfiles_configfile',
-  ];
-  $components['configfiles_inputs'] = [
-    'label' => 'tool->configfiles_inputs',
-  ];
-  $components['environment_variables'] = [
-    'label' => 'tool->environment_variables',
-  ];
-  $components['environment_variables_environment_variable'] = [
-    'label' => 'tool->environment_variables->environment_variable',
-  ];
-
-
   return $components;
 }
 
@@ -290,17 +149,25 @@ function galaxy_tool_generator_form_webform_component_edit_form_alter(&$form, &$
     case 'tool_inputs_param_type_text':
       edit_component_tool_inputs_param_type_text($form);
       break;
-    case 'inputs_param_type_select':
-      edit_component_inputs_param_type_select($form);
+    case 'tool_inputs_param_type_integer':
+      edit_component_tool_inputs_param_type_integer($form);
       break;
-    case 'inputs_param_type_integer':
-      edit_component_inputs_param_type_integer($form);
+    case 'tool_inputs_param_type_float':
+      edit_component_tool_inputs_param_type_float($form);
       break;
-    case 'inputs_param_type_float':
-      edit_component_inputs_param_type_float($form);
+    case 'tool_inputs_param_type_boolean':
+      edit_component_tool_inputs_param_type_boolean($form);
       break;
-    case 'inputs_param_option':
-      edit_component_inputs_param_option($form);
+    case 'tool_inputs_param_type_data':
+      edit_component_tool_inputs_param_type_data($form);
+      break;
+    case 'tool_inputs_param_type_select':
+      edit_component_tool_inputs_param_type_select($form);
+      break;
+    // TODO: param types
+    //==================
+    case 'tool_inputs_param_validator':
+      edit_component_tool_inputs_param_validator($form);
       break;
   }
 }

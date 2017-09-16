@@ -3,75 +3,28 @@
 /**
  * Implements _webform_defaults_component().
  */
-function _webform_defaults_inputs_param_type_float() {
-  return [
-    'name' => '',
-    'form_key' => NULL,
-    'required' => 0,
-    'pid' => 0,
-    'weight' => 0,
-    'extra' => [
-      'attributes' => '',
-      'private' => '',
-    ],
-  ];
+function _webform_defaults_tool_inputs_param_type_float() {
+  return get_webform_defaults_component_base_array();
 }
 
 /**
  * Implements _webform_render_component().
  */
-function _webform_render_inputs_param_type_float($component, $value = NULL, $filter = TRUE, $submission = NULL) {
-  $form['inputs_param_type_float'] = [
-    '#type' => 'fieldset',
-    '#title' => '<b>tool > inputs > param (type: float)</b>',
-    '#attributes' => ['class' => ['webform-component-fieldset']],
-  ];
-  $tag_value_pairs = '';
-  if (!empty($component['extra']['attributes'])) {
-    foreach ($component['extra']['attributes'] as $tag => $value) {
-      if ($value != NULL & $tag != 'options') {
-        if($tag == 'name') {
-          $tag_value_pairs .= '<span style="color: #FF5666"><b>' . $tag . '</b></span>="' . $value . '" ';
-        } else {
-          $tag_value_pairs .= '<span style="color: #42D9C8"><b>' . $tag . '</b></span>="' . $value . '" ';
-        }
-      }
-    }
-  }
-  $form['inputs_param_type_float']['inputs_param_type_float_xml'] = [
-    '#markup' => '&lt;<span style="color: #19B5FE"><b>param</b></span> ' . $tag_value_pairs . '&gt;&lt;/<span style="color: #19B5FE"><b>param</b></span>&gt;',
-  ];
-
-  // returning $form breaks components-grouping. it has to return $form['inputs']
-  return $form['inputs_param_type_float'];
+function _webform_render_tool_inputs_param_type_float($component, $value = NULL, $filter = TRUE, $submission = NULL) {
+  return get_component_render_array('tool_inputs_param_type_float', $component, 'tool > inputs > param (type: float)');
 }
 
-
 /**
- * edit component: inputs_param_type_float
+ * Implement edit command function.
  */
-function edit_component_inputs_param_type_float(&$form) {
+function edit_component_tool_inputs_param_type_float(&$form) {
   unset($form['validation']);
   unset($form['display']);
-  $form['name'] = [
-    '#type' => 'value',
-    '#value' => $form['name']['#default_value'],
-  ];
-  $form['form_key'] = [
-    '#type' => 'value',
-    '#value' => $form['form_key']['#default_value'],
-  ];
-  $form['extra'] = [];
-  $form['extra']['attributes'] = [
-    '#type' => 'fieldset',
-    '#title' => t('Attributes'),
-    '#description' => t("Tag sets for this element."),
-  ];
-  foreach (get_param_basetype_form_elements() as $key => $value) {
-    $form['extra']['attributes'][$key] = $value;
-  }
 
-  // tag specific attributes
+  $form = array_merge($form, get_edit_component_base_form_elements($form));
+
+  // form field to edit attributes, available attributes includes:
+  $form = array_merge($form, get_param_type_base_form_elements($form, 'float'));
   $form['extra']['attributes']['value'] = [
     '#type' => 'textfield',
     '#title' => t('Value'),
@@ -80,11 +33,15 @@ function edit_component_inputs_param_type_float(&$form) {
   $form['extra']['attributes']['min'] = [
     '#type' => 'textfield',
     '#title' => t('Min'),
-    '#description' => t('Minimum valid parameter value.'),
+    '#description' => t('Minimum valid parameter value - only valid 
+        when <span style="color: #FF5666">type</span> is <span style="color: #FF5666">integer</span> 
+        or <span style="color: #FF5666">float</span>.'),
   ];
   $form['extra']['attributes']['max'] = [
     '#type' => 'textfield',
     '#title' => t('Max'),
-    '#description' => t('Minimum valid parameter value.'),
+    '#description' => t('Maximum valid parameter value - only valid 
+        when <span style="color: #FF5666">type</span> is <span style="color: #FF5666">integer</span> 
+        or <span style="color: #FF5666">float</span>.'),
   ];
 }

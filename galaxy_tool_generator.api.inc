@@ -76,11 +76,14 @@ function get_component_render_array($component_name, $component, $fieldset_title
   }
   else {
     if(preg_match('/tool_inputs_param_type_/', $component_name)) {
-      $component_name = 'param';
+      $markup = '&lt;<span style="color: #19B5FE"><b>' . 'param' . '</b></span> ' .
+        $tag_value_pairs . '&gt;' . $component['extra']['attributes']['XML_VALUE'] .
+        '&lt;/<span style="color: #19B5FE"><b>' . 'param' . '</b></span>&gt;';
+    } else {
+      $markup = '&lt;<span style="color: #19B5FE"><b>' . $component_name . '</b></span> ' .
+        $tag_value_pairs . '&gt;' . $component['extra']['attributes']['XML_VALUE'] .
+        '&lt;/<span style="color: #19B5FE"><b>' . $component_name . '</b></span>&gt;';
     }
-    $markup = '&lt;<span style="color: #19B5FE"><b>' . $component_name . '</b></span> ' .
-      $tag_value_pairs . '&gt;' . $component['extra']['attributes']['XML_VALUE'] .
-      '&lt;/<span style="color: #19B5FE"><b>' . $component_name . '</b></span>&gt;';
   }
   $form[$component_name]['xml'] = [
     '#markup' => $markup,
