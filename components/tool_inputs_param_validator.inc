@@ -25,25 +25,18 @@ function edit_component_tool_inputs_param_validator(&$form) {
 
   // form field to edit attributes, available attributes for command includes:
   $form['extra']['attributes']['type'] = [
-    '#type' => 'checkboxes',
+    '#type' => 'textarea',
     '#title' => t('Type'),
     '#description' => t('The list of supported validators is in the <span style="color: #FF5666">validator_types</span> 
       dictionary in ' .
-      l('/lib/galaxy/tools/parameters/validation.py', 'https://github.com/galaxyproject/galaxy/blob/dev/lib/galaxy/tools/parameters/validation.py')),
-    '#options' => drupal_map_assoc([
-      'expression',
-      'regex',
-      'in_range',
-      'length',
-      'metadata',
-      'unspecified_build',
-      'no_options',
-      'empty_field',
-      'dataset_metadata_in_file',
-      'dataset_metadata_in_data_table',
-      'dataset_ok_validator',
-    ]),
+      l('/lib/galaxy/tools/parameters/validation.py', 'https://github.com/galaxyproject/galaxy/blob/dev/lib/galaxy/tools/parameters/validation.py').
+      'Valid values include: <span style="color: #FF5666">expression, regex, in_range, length, metadata, 
+      unspecified_build, no_options, empty_field, dataset_metadata_in_file, dataset_metadata_in_data_table, 
+      dataset_ok_validator</span>'),
     '#required' => TRUE,
+    '#attributes' => [
+      'placeholder' => ('expression, regex, in_range, length, metadata, unspecified_build, no_options, empty_field, dataset_metadata_in_file, dataset_metadata_in_data_table, dataset_ok_validator')
+    ],
   ];
   $form['extra']['attributes']['message'] = [
     '#type' => 'textarea',
