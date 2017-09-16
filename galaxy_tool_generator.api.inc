@@ -80,9 +80,10 @@ function get_component_render_array($component_name, $component, $fieldset_title
         $tag_value_pairs . '&gt;' . $component['extra']['attributes']['XML_VALUE'] .
         '&lt;/<span style="color: #19B5FE"><b>' . 'param' . '</b></span>&gt;';
     } else {
-      $markup = '&lt;<span style="color: #19B5FE"><b>' . $component_name . '</b></span> ' .
+    $tag_name = end(explode('_', $component_name));
+      $markup = '&lt;<span style="color: #19B5FE"><b>' . $tag_name . '</b></span> ' .
         $tag_value_pairs . '&gt;' . $component['extra']['attributes']['XML_VALUE'] .
-        '&lt;/<span style="color: #19B5FE"><b>' . $component_name . '</b></span>&gt;';
+        '&lt;/<span style="color: #19B5FE"><b>' . $tag_name . '</b></span>&gt;';
     }
   }
   $form[$component_name]['xml'] = [
