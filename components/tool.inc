@@ -21,7 +21,7 @@ function edit_component_tool(&$form) {
   unset($form['validation']);
   unset($form['display']);
 
-  $form = array_merge($form, get_edit_component_base_form_elements($form));
+  $form = array_merge($form, get_edit_component_base_form_elements($form, 'tool'));
 
   // form field to edit attributes, available attributes for command includes:
   $form['extra']['attributes']['id'] = [

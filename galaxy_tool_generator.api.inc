@@ -25,9 +25,9 @@ function get_webform_defaults_component_base_array() {
  * The form consists of a fieldset, within the fieldset it is a markup form
  * element to display a galaxy tool XML element.
  *
- * @param $component_name the defined component name.
- * @param $component the component array.
- * @param $fieldset_title the fieldset title which reflects the XML element
+ * @param string $component_name the defined component name.
+ * @param array $component the component array.
+ * @param string $fieldset_title the fieldset title which reflects the XML element
  *   structure. examples: 'tool > inputs', 'tool > inputs > section'
  *
  * @return array
@@ -42,19 +42,19 @@ function get_component_render_array($component_name, $component, $fieldset_title
     '#collapsible' => TRUE,
     '#collapsed' => FALSE,
   ];
-  $tag_value_pairs = '';
+  $attribute_value_pairs = '';
   if (!empty($component['extra']['attributes'])) {
-    foreach ($component['extra']['attributes'] as $tag => $value) {
+    foreach ($component['extra']['attributes'] as $attribute => $value) {
       if ($value != NULL) {
         // use red color to highlight the attribute 'name'.
-        if ($tag == 'name') {
-          $tag_value_pairs .= '<span style="color: #FF5666"><b>' . $tag . '</b></span>="' . $value . '" ';
+        if ($attribute == 'name') {
+          $attribute_value_pairs .= '<span style="color: #FF5666"><b>' . $attribute . '</b></span>="' . $value . '" ';
         }
         // use another color for all other attributes.
         else {
           // 'XML_VALUE' is not a real attribute, need to be excluded.
-          if ($tag != 'XML_VALUE') {
-            $tag_value_pairs .= '<span style="color: #42D9C8"><b>' . $tag . '</b></span>="' . $value . '" ';
+          if ($attribute != 'XML_VALUE') {
+            $attribute_value_pairs .= '<span style="color: #42D9C8"><b>' . $attribute . '</b></span>="' . $value . '" ';
           }
         }
       }
@@ -67,25 +67,17 @@ function get_component_render_array($component_name, $component, $fieldset_title
     'tool_command',
     'tool_version_command',
   ])) {
-    $markup = '&lt;<span style="color: #19B5FE"><b>' . $component_name . '</b></span> ' .
-      $tag_value_pairs . '&gt;![CDATA[<br/>' .
+    $markup = '&lt;<span style="color: #19B5FE"><b>' . $component['extra']['galaxy_tool_xml_tag'] . '</b></span> ' .
+      $attribute_value_pairs . '&gt;![CDATA[<br/>' .
       '<pre>' .
       $component['extra']['attributes']['XML_VALUE'] .
       '</pre>' .
-      '<br/>]]&gt;&lt;/<span style="color: #19B5FE"><b>' . $component_name . '</b></span>&gt;';
+      '<br/>]]&gt;&lt;/<span style="color: #19B5FE"><b>' . $component['extra']['galaxy_tool_xml_tag'] . '</b></span>&gt;';
   }
   else {
-    if(preg_match('/tool_inputs_param_type_/', $component_name)) {
-      $markup = '&lt;<span style="color: #19B5FE"><b>' . 'param' . '</b></span> ' .
-        $tag_value_pairs . '&gt;' . $component['extra']['attributes']['XML_VALUE'] .
-        '&lt;/<span style="color: #19B5FE"><b>' . 'param' . '</b></span>&gt;';
-    } else {
-      $temp = explode('_', $component_name);
-      $tag_name = $temp[count($temp) - 1];
-      $markup = '&lt;<span style="color: #19B5FE"><b>' . $tag_name . '</b></span> ' .
-        $tag_value_pairs . '&gt;' . $component['extra']['attributes']['XML_VALUE'] .
-        '&lt;/<span style="color: #19B5FE"><b>' . $tag_name . '</b></span>&gt;';
-    }
+      $markup = '&lt;<span style="color: #19B5FE"><b>' . $component['extra']['galaxy_tool_xml_tag'] . '</b></span> ' .
+        $attribute_value_pairs . '&gt;' . $component['extra']['attributes']['XML_VALUE'] .
+        '&lt;/<span style="color: #19B5FE"><b>' . $component['extra']['galaxy_tool_xml_tag'] . '</b></span>&gt;';
   }
   $form[$component_name]['xml'] = [
     '#markup' => $markup,
@@ -97,9 +89,11 @@ function get_component_render_array($component_name, $component, $fieldset_title
 
 
 /**
+ *
+ * @param string $galaxy_tool_xml_tag a xml tag the webform component is built for.
  * @return array
  */
-function get_edit_component_base_form_elements($form) {
+function get_edit_component_base_form_elements($form, $galaxy_tool_xml_tag) {
   $form['name'] = [
     '#type' => 'value',
     '#value' => $form['name']['#default_value'],
@@ -110,6 +104,10 @@ function get_edit_component_base_form_elements($form) {
   ];
 
   $form['extra'] = [];
+  $form['extra']['galaxy_tool_xml_tag'] = [
+    '#type' => 'value',
+    '#value' => $galaxy_tool_xml_tag,
+  ];
   $form['extra']['attributes'] = [
     '#type' => 'fieldset',
     '#title' => t('Attributes'),
@@ -125,6 +123,8 @@ function get_edit_component_base_form_elements($form) {
 /**
  * function to return base form elements for all kinds of param components.
  *
+ * @param array $form
+ * @param string $type
  * @return array
  */
 function get_param_type_base_form_elements($form, $type) {

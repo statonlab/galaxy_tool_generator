@@ -21,7 +21,7 @@ function edit_component_tool_inputs_param_type_float(&$form) {
   unset($form['validation']);
   unset($form['display']);
 
-  $form = array_merge($form, get_edit_component_base_form_elements($form));
+  $form = array_merge($form, get_edit_component_base_form_elements($form, 'param'));
 
   // form field to edit attributes, available attributes includes:
   $form = array_merge($form, get_param_type_base_form_elements($form, 'float'));

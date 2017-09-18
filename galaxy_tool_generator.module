@@ -171,3 +171,26 @@ function galaxy_tool_generator_form_webform_component_edit_form_alter(&$form, &$
       break;
   }
 }
+
+/**
+ * Implements hook_form_alter().
+ */
+function galaxy_tool_generator_form_alter(&$form, &$form_state, $form_id) {
+  if (!isset($form_state['webform']['component_tree'])) {
+    // no webform components, no need to alter form.
+    return;
+  }
+  else {
+    $galaxy_tool = $form_state['webform']['component_tree'];
+    // check if webform has only one component.
+    if (count($galaxy_tool['children']) != 1) {
+      return drupal_set_message('The top webform should only have one Galaxy tool element.', 'warning');
+    }
+
+    // check if
+    if (!isset($galaxy_tool['children'][1]['extra']) | $galaxy_tool['children'][1]['extra']['galaxy_tool_xml_tag'] != 'tool') {
+      return drupal_set_message('All galaxy tool element need to be wrapped within 
+                the <span style="color: #FF5666">&lt;tool&gt;&lt;/tool&gt;</span> tag.');
+    }
+  }
+}

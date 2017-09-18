@@ -26,7 +26,7 @@ function edit_component_tool_description(&$form) {
   unset($form['validation']);
   unset($form['display']);
 
-  $form = array_merge($form, get_edit_component_base_form_elements($form));
+  $form = array_merge($form, get_edit_component_base_form_elements($form, 'description'));
 
   // form field to edit attributes, available attributes for command includes:
   //      NA (this tag does not include any attributes).
