@@ -194,37 +194,10 @@ function get_param_type_base_form_elements($form, $type) {
   return $form;
 }
 
+
 /**
- * recursive function to build galaxy tool config file from webform components.
- *
- * @param array $galaxy_webform
+ * Class WebformComponentIterator
  */
-function build_galaxy_tool_xml_element(array $component_tree, DOMDocument &$domdocument) {
-  if (isset($component_tree['extra'])) {
-    // create element
-    $DOMElem = $domdocument->createElement($component_tree['extra']['galaxy_tool_xml_tag']);
-    foreach ($component_tree['extra']['attributes'] as $attribute => $value) {
-      // create attribute
-      $DOMAttr = $domdocument->createAttribute($attribute);
-      $DOMAttr->value = $value;
-    }
-
-    if (isset($component_tree['children'])) {
-      foreach ($component_tree['children'] as $child) {
-        // append child element.
-        $new_node = $domdocument->appendChild($DOMElem);
-        // create element
-        $new_node->createElement($child['extra']['galaxy_tool_xml_tag']);
-        foreach ($child['extra']['attributes'] as $attribute => $value) {
-          // create attribute
-          $DOMAttr = $new_node->createAttribute($attribute);
-          $DOMAttr->value = $value;
-        }
-      }
-    }
-  }
-}
-
 class WebformComponentIterator extends ArrayIterator implements RecursiveIterator {
 
   public function getChildren() {
@@ -240,3 +213,52 @@ class WebformComponentIterator extends ArrayIterator implements RecursiveIterato
   }
 }
 
+
+/**
+ * function to iterate through webform components to build xml.
+ *
+ * @param array $component_tree_root_children the root children of the component tree from a webform.
+ * @return string A string of XML file.
+ */
+function build_galaxy_tool_xml($component_tree_root_children) {
+  // refer to: https://evolvingweb.ca/blog/processing-recursive-data-structures-php
+
+  // Create a RecursiveIterator
+  $webform_component_iterator = new WebformComponentIterator($component_tree_root_children);
+
+  // Create a RecursiveIteratorIterator
+  $recursive_iter_iter = new RecursiveIteratorIterator(
+    $webform_component_iterator,
+    RecursiveIteratorIterator::SELF_FIRST
+  );
+
+  // build DOM Document.
+  $xml = new DOMDocument();
+  foreach ($recursive_iter_iter as $component) {
+    // THE KEY POINT HERE IS TO USE A VARIABLE VARIABLE TO NAME each new XML ELEMENT.
+    // the new element is named with xml_current_node . $cid.
+    $xml_current_node = 'xml_current_node_' . $component['cid'];
+    // if XML_VALUE exists, set XML_VALUE as tag value.
+    if (isset($component['extra']['attributes']['XML_VALUE'])) {
+      $$xml_current_node = $xml->createElement($component['extra']['galaxy_tool_xml_tag'], $component['extra']['attributes']['XML_VALUE']);
+      unset($component['extra']['attributes']['XML_VALUE']);
+    }
+    else {
+      $$xml_current_node = $xml->createElement($component['extra']['galaxy_tool_xml_tag']);
+    }
+    // set attributes
+    foreach (array_filter($component['extra']['attributes']) as $attribute => $value) {
+      $$xml_current_node->setAttribute($attribute, $value);
+    }
+    // USE the pid to find the variable name of its parent xml element and append to it as a child element.
+    $xml_parent_node = 'xml_current_node_' . $component['pid'];
+    if (isset($$xml_parent_node)) {
+      $$xml_parent_node->appendChild($$xml_current_node);
+    } else {
+      // if the parent element does not exist, append to the root element.
+      $xml->appendChild($$xml_current_node);
+    }
+  }
+
+  return $xml->saveXML();
+}

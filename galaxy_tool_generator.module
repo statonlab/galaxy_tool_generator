@@ -190,41 +190,13 @@ function galaxy_tool_generator_form_alter(&$form, &$form_state, $form_id) {
       return drupal_set_message('The top webform should only have one Galaxy tool element.', 'warning');
     }
 
-    // check if
+    // check if the first child is 'tool'
     if (!isset($galaxy_tool['children'][1]['extra']) | $galaxy_tool['children'][1]['extra']['galaxy_tool_xml_tag'] != 'tool') {
       return drupal_set_message('All galaxy tool element need to be wrapped within 
                 the <span style="color: #FF5666">&lt;tool&gt;&lt;/tool&gt;</span> tag.');
     }
   }
 
+  dpm(build_galaxy_tool_xml($form_state['webform']['component_tree']['children']));
 
-  // build DOM Document.
-  $component_tree = $form_state['webform']['component_tree']['children'];
-  $webform_component_iterator = new WebformComponentIterator($component_tree);
-
-  $recursive_iter_iter = new RecursiveIteratorIterator(
-    $webform_component_iterator,
-    RecursiveIteratorIterator::SELF_FIRST
-  );
-
-  $dom_document = new DOMDocument();
-  foreach ($recursive_iter_iter as $component) {
-    dpm($component);
-    // if XML_VALUE exists, set XML_VALUE as tag value.
-    if (isset($component['extra']['attributes']['XML_VALUE'])) {
-      $child_node = $dom_document->createElement($component['extra']['galaxy_tool_xml_tag'],
-        $component['extra']['attributes']['XML_VALUE']);
-      unset($component['extra']['attributes']['XML_VALUE']);
-    }
-    else {
-      $child_node = $dom_document->createElement($component['extra']['galaxy_tool_xml_tag']);
-    }
-    // set attributes
-    foreach (array_filter($component['extra']['attributes']) as $attribute => $value) {
-      $child_node->setAttribute($attribute, $value);
-    }
-    $dom_document->appendChild($child_node);
-  }
-
-  dpm($dom_document->saveXML());
 }
