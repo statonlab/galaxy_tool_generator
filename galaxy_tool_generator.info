@@ -5,4 +5,3 @@ project = Galaxy
 version = 7.x-1.x
 
 dependencies[] = webform
-dependencies[] = options_element

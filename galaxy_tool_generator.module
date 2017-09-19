@@ -196,6 +196,9 @@ function galaxy_tool_generator_form_alter(&$form, &$form_state, $form_id) {
                 the <span style="color: #FF5666">&lt;tool&gt;&lt;/tool&gt;</span> tag.');
     }
   }
+
+  // This form is not supposed to be submitted, so unset #submit button.
+  unset($form['actions']);
 }
 
 
