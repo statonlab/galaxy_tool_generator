@@ -214,12 +214,14 @@ class WebformComponentIterator extends ArrayIterator implements RecursiveIterato
 }
 
 
+
 /**
  * function to iterate through webform components to build xml.
  *
  * @param array $component_tree_root_children the root children of the component tree from a webform.
  * @return string A string of XML file.
  */
+/* // this function has been replaced with a better implemented function.
 function build_galaxy_tool_xml($component_tree_root_children) {
   // refer to: https://evolvingweb.ca/blog/processing-recursive-data-structures-php
 
@@ -236,6 +238,44 @@ function build_galaxy_tool_xml($component_tree_root_children) {
   $xml = new DOMDocument();
   foreach ($recursive_iter_iter as $component) {
     // THE KEY POINT HERE IS TO USE A VARIABLE VARIABLE TO NAME each new XML ELEMENT.
+    // the new element is named with xml_current_node . $cid.
+    $xml_current_node = 'xml_current_node_' . $component['cid'];
+    // if XML_VALUE exists, set XML_VALUE as tag value.
+    if (isset($component['extra']['attributes']['XML_VALUE'])) {
+      $$xml_current_node = $xml->createElement($component['extra']['galaxy_tool_xml_tag'], $component['extra']['attributes']['XML_VALUE']);
+      unset($component['extra']['attributes']['XML_VALUE']);
+    }
+    else {
+      $$xml_current_node = $xml->createElement($component['extra']['galaxy_tool_xml_tag']);
+    }
+    // set attributes
+    foreach (array_filter($component['extra']['attributes']) as $attribute => $value) {
+      $$xml_current_node->setAttribute($attribute, $value);
+    }
+    // USE the pid to find the variable name of its parent xml element and append to it as a child element.
+    $xml_parent_node = 'xml_current_node_' . $component['pid'];
+    if (isset($$xml_parent_node)) {
+      $$xml_parent_node->appendChild($$xml_current_node);
+    } else {
+      // if the parent element does not exist, append to the root element.
+      $xml->appendChild($$xml_current_node);
+    }
+  }
+
+  return $xml->saveXML();
+}
+*/
+
+/**
+ * @param array $webform_components an array consists of all components from a galaxy webform.
+ * @return string
+ */
+function build_galaxy_tool_xml($webform_components) {
+  // build DOM Document.
+  $xml = new DOMDocument();
+
+  foreach ($webform_components as $component) {
+    // THE KEY POINT HERE IS TO USE A VARIABLE VARIABLE TO NAME EACH NEW XML ELEMENT.
     // the new element is named with xml_current_node . $cid.
     $xml_current_node = 'xml_current_node_' . $component['cid'];
     // if XML_VALUE exists, set XML_VALUE as tag value.

@@ -196,7 +196,7 @@ function galaxy_tool_generator_form_alter(&$form, &$form_state, $form_id) {
                 the <span style="color: #FF5666">&lt;tool&gt;&lt;/tool&gt;</span> tag.');
     }
   }
-
-  dpm(build_galaxy_tool_xml($form_state['webform']['component_tree']['children']));
-
 }
+
+
+
