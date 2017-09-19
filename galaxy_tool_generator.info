@@ -1,7 +1,7 @@
 name = Galaxy Tool Generator
 description = A module to generate Galaxy tool wrappers
 core = 7.x
-project = Galaxy
+package = Galaxy
 version = 7.x-1.x
 
 dependencies[] = webform
