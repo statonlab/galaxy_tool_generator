@@ -193,4 +193,30 @@ function galaxy_tool_generator_form_alter(&$form, &$form_state, $form_id) {
                 the <span style="color: #FF5666">&lt;tool&gt;&lt;/tool&gt;</span> tag.');
     }
   }
+
+
+  // build DOM Document.
+  $component_tree = $form_state['webform']['component_tree']['children'];
+  $webform_component_iterator = new WebformComponentIterator($component_tree);
+
+  $recursive_iter_iter = new RecursiveIteratorIterator(
+    $webform_component_iterator,
+    RecursiveIteratorIterator::SELF_FIRST
+  );
+
+  $dom_document = new DOMDocument();
+  foreach ($recursive_iter_iter as $component) {
+    dpm($component);
+    // get element tag
+    $tag = $component['extra']['galaxy_tool_xml_tag'];
+    $dom_document->createElement($tag);
+    // get attributes
+    foreach ($component['extra']['attributes'] as $attribute => $value) {
+      // create attribute
+      $DOMAttr = $dom_document->createAttribute($attribute);
+      $DOMAttr->value = $value;
+    }
+  }
+
+//  dpm($dom_document->saveXML());
 }

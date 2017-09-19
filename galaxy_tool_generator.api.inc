@@ -27,8 +27,8 @@ function get_webform_defaults_component_base_array() {
  *
  * @param string $component_name the defined component name.
  * @param array $component the component array.
- * @param string $fieldset_title the fieldset title which reflects the XML element
- *   structure. examples: 'tool > inputs', 'tool > inputs > section'
+ * @param string $fieldset_title the fieldset title which reflects the XML
+ *   element structure. examples: 'tool > inputs', 'tool > inputs > section'
  *
  * @return array
  */
@@ -75,9 +75,9 @@ function get_component_render_array($component_name, $component, $fieldset_title
       '<br/>]]&gt;&lt;/<span style="color: #19B5FE"><b>' . $component['extra']['galaxy_tool_xml_tag'] . '</b></span>&gt;';
   }
   else {
-      $markup = '&lt;<span style="color: #19B5FE"><b>' . $component['extra']['galaxy_tool_xml_tag'] . '</b></span> ' .
-        $attribute_value_pairs . '&gt;' . $component['extra']['attributes']['XML_VALUE'] .
-        '&lt;/<span style="color: #19B5FE"><b>' . $component['extra']['galaxy_tool_xml_tag'] . '</b></span>&gt;';
+    $markup = '&lt;<span style="color: #19B5FE"><b>' . $component['extra']['galaxy_tool_xml_tag'] . '</b></span> ' .
+      $attribute_value_pairs . '&gt;' . $component['extra']['attributes']['XML_VALUE'] .
+      '&lt;/<span style="color: #19B5FE"><b>' . $component['extra']['galaxy_tool_xml_tag'] . '</b></span>&gt;';
   }
   $form[$component_name]['xml'] = [
     '#markup' => $markup,
@@ -90,7 +90,9 @@ function get_component_render_array($component_name, $component, $fieldset_title
 
 /**
  *
- * @param string $galaxy_tool_xml_tag a xml tag the webform component is built for.
+ * @param string $galaxy_tool_xml_tag a xml tag the webform component is built
+ *   for.
+ *
  * @return array
  */
 function get_edit_component_base_form_elements($form, $galaxy_tool_xml_tag) {
@@ -125,6 +127,7 @@ function get_edit_component_base_form_elements($form, $galaxy_tool_xml_tag) {
  *
  * @param array $form
  * @param string $type
+ *
  * @return array
  */
 function get_param_type_base_form_elements($form, $type) {
@@ -164,7 +167,7 @@ function get_param_type_base_form_elements($form, $type) {
     '#title' => t('Help'),
     '#description' => t('Short bit of text, rendered on the tool form just below 
       the associated field to provide information about the field. Find the 
-      Intergalactic Utilities Commision suggested best practices for this element here.')
+      Intergalactic Utilities Commision suggested best practices for this element here.'),
   ];
   $form['extra']['attributes']['optional'] = [
     '#type' => 'radios',
@@ -190,3 +193,50 @@ function get_param_type_base_form_elements($form, $type) {
   ];
   return $form;
 }
+
+/**
+ * recursive function to build galaxy tool config file from webform components.
+ *
+ * @param array $galaxy_webform
+ */
+function build_galaxy_tool_xml_element(array $component_tree, DOMDocument &$domdocument) {
+  if (isset($component_tree['extra'])) {
+    // create element
+    $DOMElem = $domdocument->createElement($component_tree['extra']['galaxy_tool_xml_tag']);
+    foreach ($component_tree['extra']['attributes'] as $attribute => $value) {
+      // create attribute
+      $DOMAttr = $domdocument->createAttribute($attribute);
+      $DOMAttr->value = $value;
+    }
+
+    if (isset($component_tree['children'])) {
+      foreach ($component_tree['children'] as $child) {
+        // append child element.
+        $new_node = $domdocument->appendChild($DOMElem);
+        // create element
+        $new_node->createElement($child['extra']['galaxy_tool_xml_tag']);
+        foreach ($child['extra']['attributes'] as $attribute => $value) {
+          // create attribute
+          $DOMAttr = $new_node->createAttribute($attribute);
+          $DOMAttr->value = $value;
+        }
+      }
+    }
+  }
+}
+
+class WebformComponentIterator extends ArrayIterator implements RecursiveIterator {
+
+  public function getChildren() {
+    // TODO: Implement getChildren() method.
+    $component = $this->current();
+    return new WebformComponentIterator($component['children']);
+  }
+
+  public function hasChildren() {
+    // TODO: Implement hasChildren() method.
+    $component = $this->current();
+    return !empty($component['children']);
+  }
+}
+
