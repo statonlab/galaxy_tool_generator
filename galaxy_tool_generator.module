@@ -199,6 +199,7 @@ function galaxy_tool_generator_form_alter(&$form, &$form_state, $form_id) {
 
   // This form is not supposed to be submitted, so unset #submit button.
   unset($form['actions']);
+  dpm($form);
 }
 
 
