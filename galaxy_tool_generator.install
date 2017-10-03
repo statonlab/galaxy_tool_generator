@@ -5,7 +5,7 @@
  *
  * Increase length of type field in table webform_component.
  */
-function galaxy_tool_generator_update_7100() {
+function galaxy_tool_generator_update_7101() {
   db_change_field('webform_component', 'type', 'type',
     [
       'description' => 'The field type of this component (textfield, select, hidden, etc.).',

@@ -273,6 +273,8 @@ function build_galaxy_tool_xml($component_tree_root_children) {
 function build_galaxy_tool_xml($webform_components) {
   // build DOM Document.
   $xml = new DOMDocument();
+  $xml->preserveWhiteSpace = FALSE;
+  $xml->formatOutput = TRUE;
 
   foreach ($webform_components as $component) {
     // THE KEY POINT HERE IS TO USE A VARIABLE VARIABLE TO NAME EACH NEW XML ELEMENT.
