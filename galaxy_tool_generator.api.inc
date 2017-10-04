@@ -64,6 +64,7 @@ function get_component_render_array($component_name, $component, $fieldset_title
   $component['extra']['attributes']['XML_VALUE'] = isset($component['extra']['attributes']['XML_VALUE']) ? $component['extra']['attributes']['XML_VALUE'] : '';
   if (in_array($component_name, [
 //    'tool_description',
+    'help',
     'tool_command',
     'tool_version_command',
   ])) {

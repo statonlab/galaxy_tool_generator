@@ -121,6 +121,32 @@ function galaxy_tool_generator_webform_component_info() {
     ],
     'file' => 'components/tool_requirements.inc',
   ];
+  $components['tool_requirements_requirement'] = [
+    'label' => 'tool->requirements->requirement',
+    'file' => 'components/tool_requirements_requirement.inc',
+  ];
+  $components['tool_requirements_container'] = [
+    'label' => 'tool->requirements->container',
+    'file' => 'components/tool_requirements_container.inc',
+  ];
+  $components['tool_outputs'] = [
+    'label' => 'tool->outputs',
+    'features' => [
+      'group' => TRUE,
+    ],
+    'file' => 'components/tool_outputs.inc',
+  ];
+  $components['tool_outputs_data'] = [
+    'label' => 'tool->outputs->data',
+    'features' => [
+      'group' => TRUE,
+    ],
+    'file' => 'components/tool_outputs_data.inc',
+  ];
+  $components['tool_help'] = [
+    'label' => 'tool->help',
+    'file' => 'components/tool_help.inc',
+  ];
   return $components;
 }
 
@@ -182,6 +208,21 @@ function galaxy_tool_generator_form_webform_component_edit_form_alter(&$form, &$
       break;
     case 'tool_requirements':
       edit_component_tool_requirements($form);
+      break;
+    case 'tool_requirements_requirement':
+      edit_component_tool_requirements_requirement($form);
+      break;
+    case 'tool_requirements_container':
+      edit_component_tool_requirements_container($form);
+      break;
+    case 'tool_outputs':
+      edit_component_tool_outputs($form);
+      break;
+    case 'tool_outputs_data':
+      edit_component_tool_outputs_data($form);
+      break;
+    case 'tool_help':
+      edit_component_tool_help($form);
       break;
   }
 }
