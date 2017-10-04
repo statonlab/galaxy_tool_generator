@@ -1,11 +1,10 @@
 <?php
 
 /**
- * Implements hook_update_N().
- *
- * Increase length of type field in table webform_component.
+ * Implements hook_install().
  */
-function galaxy_tool_generator_update_7102() {
+function galaxy_tool_generator_install() {
+  // Increase length of type field in table webform_component.
   db_change_field('webform_component', 'type', 'type',
     [
       'description' => 'The field type of this component (textfield, select, hidden, etc.).',
