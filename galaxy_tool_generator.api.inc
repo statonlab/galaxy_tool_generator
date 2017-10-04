@@ -63,7 +63,7 @@ function get_component_render_array($component_name, $component, $fieldset_title
 
   $component['extra']['attributes']['XML_VALUE'] = isset($component['extra']['attributes']['XML_VALUE']) ? $component['extra']['attributes']['XML_VALUE'] : '';
   if (in_array($component_name, [
-    'tool_description',
+//    'tool_description',
     'tool_command',
     'tool_version_command',
   ])) {
@@ -289,8 +289,11 @@ function build_galaxy_tool_xml($webform_components) {
       $$xml_current_node = $xml->createElement($component['extra']['galaxy_tool_xml_tag']);
     }
     // set attributes
-    foreach (array_filter($component['extra']['attributes']) as $attribute => $value) {
-      $$xml_current_node->setAttribute($attribute, $value);
+    $attributes = $component['extra']['attributes'];
+    if (!empty($attributes)) {
+      foreach (array_filter($attributes) as $attribute => $value) {
+        $$xml_current_node->setAttribute($attribute, $value);
+      }
     }
     // USE the pid to find the variable name of its parent xml element and append to it as a child element.
     $xml_parent_node = 'xml_current_node_' . $component['pid'];
