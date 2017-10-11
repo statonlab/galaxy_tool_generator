@@ -143,6 +143,21 @@ function galaxy_tool_generator_webform_component_info() {
     ],
     'file' => 'components/tool_outputs_data.inc',
   ];
+  $components['tool_outputs_data_filter'] = [
+    'label' => 'tool->outputs->data->filter',
+    'file' => 'components/tool_outputs_data_filter.inc',
+  ];
+  $components['tool_outputs_data_change_format'] = [
+    'label' => 'tool->outputs->data->change_format',
+    'features' => [
+      'group' => TRUE,
+    ],
+    'file' => 'components/tool_outputs_data_change_format.inc',
+  ];
+  $components['tool_outputs_data_change_format_when'] = [
+    'label' => 'tool->outputs->data->change_format->when',
+    'file' => 'components/tool_outputs_data_change_format_when.inc',
+  ];
   $components['tool_help'] = [
     'label' => 'tool->help',
     'file' => 'components/tool_help.inc',
@@ -220,6 +235,15 @@ function galaxy_tool_generator_form_webform_component_edit_form_alter(&$form, &$
       break;
     case 'tool_outputs_data':
       edit_component_tool_outputs_data($form);
+      break;
+    case 'tool_outputs_data_filter':
+      edit_component_tool_outputs_data_filter($form);
+      break;
+    case 'tool_outputs_data_change_format':
+      edit_component_tool_outputs_data_change_format($form);
+      break;
+    case 'tool_outputs_data_change_format_when':
+      edit_component_tool_outputs_data_change_format_when($form);
       break;
     case 'tool_help':
       edit_component_tool_help($form);
