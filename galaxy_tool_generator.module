@@ -253,6 +253,37 @@ function galaxy_tool_generator_form_alter(&$form, &$form_state, $form_id) {
   unset($form['actions']);
 }
 
+/**
+ * Implements hook_form_FORM_ID_alter().
+ *
+ * alter webform_components_form to remove unwanted webform component types.
+ */
+function galaxy_tool_generator_form_webform_components_form_alter(&$form, &$form_state) {
+  $webform_component_types = $form['add']['type']['#options'];
+  $unwanted_component_types = [
+    'date',
+    'email',
+    'fieldset',
+    'file',
+    'grid',
+    'hidden',
+    'markup',
+    'number',
+    'pagebreak',
+    'select',
+    'textarea',
+    'textfield',
+    'time'
+  ];
+  foreach ($webform_component_types as $key => $type) {
+    if(in_array($key, $unwanted_component_types)) {
+      unset($webform_component_types[$key]);
+    }
+  }
+  // update component type options
+  $form['add']['type']['#options'] = $webform_component_types;
+}
+
 
 
 
