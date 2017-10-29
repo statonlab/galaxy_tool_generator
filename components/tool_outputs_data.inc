@@ -32,7 +32,7 @@ function edit_component_tool_outputs_data(&$form) {
   // form field to edit attributes, available attributes for command includes:
   $form['extra']['attributes']['name'] = [
     '#type' => 'textfield',
-    '#title' => t('Type'),
+    '#title' => t('Name'),
     '#description' => t('Name for this output. This <span style="color: #FF5666">name</span> is 
         used as the Cheetah variable containing the Galaxy assigned output path in command and 
         configfile elements. The <span style="color: #FF5666">name</span> should not contain 
