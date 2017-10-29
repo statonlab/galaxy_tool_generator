@@ -64,10 +64,11 @@ function get_component_render_array($component_name, $component, $fieldset_title
 
     $component['extra']['attributes']['XML_VALUE'] = isset($component['extra']['attributes']['XML_VALUE']) ? $component['extra']['attributes']['XML_VALUE'] : '';
     if (in_array($component_name, [
-//    'tool_description',
-        'help',
+        'tool_description',
         'tool_command',
         'tool_version_command',
+        'tool_help',
+        'tool_citations_citation',
     ])) {
         $markup = '&lt;<span style="color: #19B5FE"><b>' . $component['extra']['galaxy_tool_xml_tag'] . '</b></span> ' .
             $attribute_value_pairs . '&gt;![CDATA[<br/>' .

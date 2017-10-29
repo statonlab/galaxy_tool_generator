@@ -178,6 +178,17 @@ function galaxy_tool_generator_webform_component_info()
         'label' => 'tool->help',
         'file' => 'components/tool_help.inc',
     ];
+    $components['tool_citations'] = [
+        'label' => 'tool->citations',
+        'features' => [
+            'group' => TRUE,
+        ],
+        'file' => 'components/tool_citations.inc',
+    ];
+    $components['tool_citations_citation'] = [
+        'label' => 'tool->citations->citation',
+        'file' => 'components/tool_citations_citation.inc',
+    ];
     return $components;
 }
 
@@ -273,6 +284,12 @@ function galaxy_tool_generator_form_webform_component_edit_form_alter(&$form, &$
             break;
         case 'tool_help':
             edit_component_tool_help($form);
+            break;
+        case 'tool_citations':
+            edit_component_tool_citations($form);
+            break;
+        case 'tool_citations_citation':
+            edit_component_tool_citations_citation($form);
             break;
     }
 }
