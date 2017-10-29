@@ -17,7 +17,7 @@ function _webform_defaults_tool_stdio_exit_code()
  */
 function _webform_render_tool_stdio_exit_code($component, $value = NULL, $filter = TRUE, $submission = NULL)
 {
-    return get_component_render_array('component_template', $component, 'tool > stdio > exit_code');
+    return get_component_render_array('tool_stdio_exit_code', $component, 'tool > stdio > exit_code');
 }
 
 /**

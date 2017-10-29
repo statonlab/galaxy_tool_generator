@@ -13,7 +13,7 @@ function _webform_defaults_tool_stdio()
  */
 function _webform_render_tool_stdio($component, $value = NULL, $filter = TRUE, $submission = NULL)
 {
-    return get_component_render_array('component_template', $component, 'tool > stdio');
+    return get_component_render_array('tool_stdio', $component, 'tool > stdio');
 }
 
 /**
