@@ -161,7 +161,14 @@ function galaxy_tool_generator_webform_component_info()
     ];
     $components['tool_stdio'] = [
         'label' => 'tool->stdio',
+        'features' => [
+            'group' => TRUE,
+        ],
         'file' => 'components/tool_stdio.inc',
+    ];
+    $components['tool_stdio_exit_code'] = [
+        'label' => 'tool->stdio->exit_code',
+        'file' => 'components/tool_stdio_exit_code.inc',
     ];
     $components['tool_help'] = [
         'label' => 'tool->help',
@@ -253,6 +260,9 @@ function galaxy_tool_generator_form_webform_component_edit_form_alter(&$form, &$
             break;
         case 'tool_stdio':
             edit_component_tool_stdio($form);
+            break;
+        case 'tool_stdio_exit_code':
+            edit_component_tool_stdio_exit_code($form);
             break;
         case 'tool_help':
             edit_component_tool_help($form);
