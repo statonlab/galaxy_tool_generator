@@ -319,3 +319,24 @@ function build_galaxy_tool_xml($webform_components)
 
     return $xml->saveXML();
 }
+
+
+/**
+ * grab populated data from 'extra' column from webform_component table and
+ * fill it as default values for edit component form fields.
+ * this function should be call within every edit component function.
+ */
+function edit_component_form_fields_default_value(&$form)
+{
+    $nid = $form['nid']['#value'];
+    $cid = $form['cid']['#value'];
+    if (isset($cid)) {
+        $extra = db_query('SELECT extra FROM {webform_component} WHERE nid = :nid AND cid = :cid', array(':nid' => $nid, ':cid' => $cid))->fetchField();
+        $extra = unserialize($extra);
+        if (isset($extra['attributes'])) {
+            foreach ($extra['attributes'] as $attribute => $value) {
+                $form['extra']['attributes'][$attribute]['#default_value'] = $value;
+            }
+        }
+    }
+}

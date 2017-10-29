@@ -3,45 +3,48 @@
 /**
  * Implements _webform_defaults_component().
  */
-function _webform_defaults_tool_inputs_param_type_integer() {
-  return get_webform_defaults_component_base_array();
+function _webform_defaults_tool_inputs_param_type_integer()
+{
+    return get_webform_defaults_component_base_array();
 }
 
 /**
  * Implements _webform_render_component().
  */
-function _webform_render_tool_inputs_param_type_integer($component, $value = NULL, $filter = TRUE, $submission = NULL) {
-  return get_component_render_array('tool_inputs_param_type_integer', $component, 'tool > inputs > param (type: integer)');
+function _webform_render_tool_inputs_param_type_integer($component, $value = NULL, $filter = TRUE, $submission = NULL)
+{
+    return get_component_render_array('tool_inputs_param_type_integer', $component, 'tool > inputs > param (type: integer)');
 }
 
 /**
  * Implement edit command function.
  */
-function edit_component_tool_inputs_param_type_integer(&$form) {
-  unset($form['validation']);
-  unset($form['display']);
+function edit_component_tool_inputs_param_type_integer(&$form)
+{
+    unset($form['validation']);
+    unset($form['display']);
 
-  $form = array_merge($form, get_edit_component_base_form_elements($form, 'param'));
+    $form = array_merge($form, get_edit_component_base_form_elements($form, 'param'));
 
-  // form field to edit attributes, available attributes includes:
-  $form = array_merge($form, get_param_type_base_form_elements($form, 'integer'));
-  $form['extra']['attributes']['value'] = [
-    '#type' => 'textfield',
-    '#title' => t('Value'),
-    '#description' => t('The default value for this parameter.'),
-  ];
-  $form['extra']['attributes']['min'] = [
-    '#type' => 'textfield',
-    '#title' => t('Min'),
-    '#description' => t('Minimum valid parameter value - only valid 
+    // form field to edit attributes, available attributes includes:
+    $form = array_merge($form, get_param_type_base_form_elements($form, 'integer'));
+    $form['extra']['attributes']['value'] = [
+        '#type' => 'textfield',
+        '#title' => t('Value'),
+        '#description' => t('The default value for this parameter.'),
+    ];
+    $form['extra']['attributes']['min'] = [
+        '#type' => 'textfield',
+        '#title' => t('Min'),
+        '#description' => t('Minimum valid parameter value - only valid 
         when <span style="color: #FF5666">type</span> is <span style="color: #FF5666">integer</span> 
         or <span style="color: #FF5666">float</span>.'),
-  ];
-  $form['extra']['attributes']['max'] = [
-    '#type' => 'textfield',
-    '#title' => t('Max'),
-    '#description' => t('Maximum valid parameter value - only valid 
+    ];
+    $form['extra']['attributes']['max'] = [
+        '#type' => 'textfield',
+        '#title' => t('Max'),
+        '#description' => t('Maximum valid parameter value - only valid 
         when <span style="color: #FF5666">type</span> is <span style="color: #FF5666">integer</span> 
         or <span style="color: #FF5666">float</span>.'),
-  ];
+    ];
 }
