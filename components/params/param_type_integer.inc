@@ -47,4 +47,8 @@ function edit_component_tool_inputs_param_type_integer(&$form)
         when <span style="color: #FF5666">type</span> is <span style="color: #FF5666">integer</span> 
         or <span style="color: #FF5666">float</span>.'),
     ];
+
+    // grab populated data from 'extra' column from webform_component table and
+    // fill it as default values for edit component form fields.
+    edit_component_form_fields_default_value($form);
 }

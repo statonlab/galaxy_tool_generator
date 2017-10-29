@@ -48,4 +48,8 @@ function edit_component_tool_inputs_param_type_data(&$form)
         ]),
     ];
 
+    // grab populated data from 'extra' column from webform_component table and
+    // fill it as default values for edit component form fields.
+    edit_component_form_fields_default_value($form);
+
 }

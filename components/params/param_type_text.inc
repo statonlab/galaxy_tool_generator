@@ -52,4 +52,8 @@ function edit_component_tool_inputs_param_type_text(&$form)
       attribute to the param tag. This can be one dimensional (e.g. <span style="color: #FF5666">size="40"</span>) or 
       two dimensional (e.g. <span style="color: #FF5666">size="5x25"</span>).')
     ];
+
+    // grab populated data from 'extra' column from webform_component table and
+    // fill it as default values for edit component form fields.
+    edit_component_form_fields_default_value($form);
 }
