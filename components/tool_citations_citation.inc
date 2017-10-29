@@ -54,8 +54,7 @@ function edit_component_tool_citations_citation(&$form)
                 journal={R package version 0.9},
                 volume={6},
                 year={2016}
-            }
-        ',
+            }',
     ];
 
     // grab populated data from 'extra' column from webform_component table and

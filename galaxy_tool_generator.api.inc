@@ -289,7 +289,7 @@ function build_galaxy_tool_xml($webform_components)
         $xml_current_node = 'xml_current_node_' . $component['cid'];
         // if XML_VALUE exists, set XML_VALUE as tag value.
         if (isset($component['extra']['attributes']['XML_VALUE'])) {
-            if (in_array($component['extra']['galaxy_tool_xml_tag'], ['version_command', 'command', 'help'])) {
+            if (in_array($component['extra']['galaxy_tool_xml_tag'], ['version_command', 'command', 'help', 'citation'])) {
                 $$xml_current_node = $xml->createElement($component['extra']['galaxy_tool_xml_tag']);
                 $$xml_current_node->appendChild(
                     $xml->createCDATASection($component['extra']['attributes']['XML_VALUE'])
