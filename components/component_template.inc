@@ -1,4 +1,8 @@
 <?php
+// TODO: replace component names in all function names
+// TODO: replace fieldset_title in function get_component_render_array()
+// TODO: replace $galaxy_tool_xml_tag in function get_edit_component_base_form_elements()
+// TODO: edit form elements for attributes.
 
 /**
  * Implements _webform_defaults_component().

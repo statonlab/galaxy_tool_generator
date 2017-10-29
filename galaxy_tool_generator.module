@@ -159,6 +159,10 @@ function galaxy_tool_generator_webform_component_info()
         'label' => 'tool->outputs->data->change_format->when',
         'file' => 'components/tool_outputs_data_change_format_when.inc',
     ];
+    $components['tool_stdio'] = [
+        'label' => 'tool->stdio',
+        'file' => 'components/tool_stdio.inc',
+    ];
     $components['tool_help'] = [
         'label' => 'tool->help',
         'file' => 'components/tool_help.inc',
@@ -246,6 +250,9 @@ function galaxy_tool_generator_form_webform_component_edit_form_alter(&$form, &$
             break;
         case 'tool_outputs_data_change_format_when':
             edit_component_tool_outputs_data_change_format_when($form);
+            break;
+        case 'tool_stdio':
+            edit_component_tool_stdio($form);
             break;
         case 'tool_help':
             edit_component_tool_help($form);
