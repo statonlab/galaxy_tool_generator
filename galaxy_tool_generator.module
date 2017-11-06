@@ -10,314 +10,312 @@ require drupal_get_path('module', 'galaxy_tool_generator') . '/galaxy_tool_gener
 /*
  * Implements hook_webform_component_info().
  */
-function galaxy_tool_generator_webform_component_info()
-{
-    $components = [];
-    $components['tool'] = [
-        'label' => 'tool',
-        'features' => [
-            'group' => TRUE,
-        ],
-        'file' => 'components/tool.inc',
-    ];
-    $components['tool_description'] = [
-        'label' => 'tool->description',
-        'file' => 'components/tool_description.inc',
-    ];
-    $components['tool_version_command'] = [
-        'label' => 'tool->version_command',
-        'file' => 'components/tool_version_command.inc',
-    ];
-    $components['tool_command'] = [
-        'label' => 'tool->command',
-        'file' => 'components/tool_command.inc',
-    ];
-    $components['tool_inputs'] = [
-        'label' => 'tool->inputs',
-        'features' => [
-            'group' => TRUE,
-        ],
-        'file' => 'components/tool_inputs.inc',
-    ];
-    $components['tool_inputs_section'] = [
-        'label' => 'tool->inputs->section',
-        'features' => [
-            'group' => TRUE,
-        ],
-        'file' => 'components/tool_inputs_section.inc',
-    ];
-    $components['tool_inputs_repeat'] = [
-        'label' => 'tool->inputs->repeat',
-        'features' => [
-            'group' => TRUE,
-        ],
-        'file' => 'components/tool_inputs_repeat.inc',
-    ];
-    $components['tool_inputs_conditional'] = [
-        'label' => 'tool->inputs->conditional',
-        'features' => [
-            'group' => TRUE,
-        ],
-        'file' => 'components/tool_inputs_conditional.inc',
-    ];
-    $components['tool_inputs_conditional_when'] = [
-        'label' => 'tool->inputs->conditional->when',
-        'features' => [
-            'group' => TRUE,
-        ],
-        'file' => 'components/tool_inputs_conditional_when.inc',
-    ];
-    //=========================== param type starts ==============================
-    // param is the most important element in galaxy tool configure file.
-    // let's create a webform component for each type of param.
-    $components['tool_inputs_param'] = [
-        'label' => 'tool->inputs->param',
-        'features' => [
-            'group' => TRUE,
-        ],
-        'file' => 'components/tool_inputs_param.inc',
-    ];
-    $components['tool_inputs_param_type_text'] = [
-        'label' => 'tool->inputs->param(type: text)',
-        'file' => 'components/params/param_type_text.inc',
-    ];
-    $components['tool_inputs_param_type_integer'] = [
-        'label' => 'tool->inputs->param(type: integer)',
-        'file' => 'components/params/param_type_integer.inc',
-    ];
-    $components['tool_inputs_param_type_float'] = [
-        'label' => 'tool->inputs->param(type: float)',
-        'file' => 'components/params/param_type_float.inc',
-    ];
-    $components['tool_inputs_param_type_boolean'] = [
-        'label' => 'tool->inputs->param(type: boolean)',
-        'file' => 'components/params/param_type_boolean.inc',
-    ];
-    $components['tool_inputs_param_type_data'] = [
-        'label' => 'tool->inputs->param(type: data)',
-        'file' => 'components/params/param_type_data.inc',
-    ];
-    $components['tool_inputs_param_type_select'] = [
-        'label' => 'tool->inputs->param(type: select)',
-        'features' => [
-            'group' => TRUE,
-        ],
-        'file' => 'components/params/param_type_select.inc',
-    ];
-    // TODO: param types
-    //  data_column
-    //  drill_down
-    //  data_collection
-    //  color
-    //=========================== param type ends ================================
-    $components['tool_inputs_param_validator'] = [
-        'label' => 'tool->inputs->param->validator',
-        'file' => 'components/tool_inputs_param_validator.inc',
-    ];
+function galaxy_tool_generator_webform_component_info() {
+  $components = [];
+  $components['tool'] = [
+    'label' => 'tool',
+    'features' => [
+      'group' => TRUE,
+    ],
+    'file' => 'components/tool.inc',
+  ];
+  $components['tool_description'] = [
+    'label' => 'tool->description',
+    'file' => 'components/tool_description.inc',
+  ];
+  $components['tool_version_command'] = [
+    'label' => 'tool->version_command',
+    'file' => 'components/tool_version_command.inc',
+  ];
+  $components['tool_command'] = [
+    'label' => 'tool->command',
+    'file' => 'components/tool_command.inc',
+  ];
+  $components['tool_inputs'] = [
+    'label' => 'tool->inputs',
+    'features' => [
+      'group' => TRUE,
+    ],
+    'file' => 'components/tool_inputs.inc',
+  ];
+  $components['tool_inputs_section'] = [
+    'label' => 'tool->inputs->section',
+    'features' => [
+      'group' => TRUE,
+    ],
+    'file' => 'components/tool_inputs_section.inc',
+  ];
+  $components['tool_inputs_repeat'] = [
+    'label' => 'tool->inputs->repeat',
+    'features' => [
+      'group' => TRUE,
+    ],
+    'file' => 'components/tool_inputs_repeat.inc',
+  ];
+  $components['tool_inputs_conditional'] = [
+    'label' => 'tool->inputs->conditional',
+    'features' => [
+      'group' => TRUE,
+    ],
+    'file' => 'components/tool_inputs_conditional.inc',
+  ];
+  $components['tool_inputs_conditional_when'] = [
+    'label' => 'tool->inputs->conditional->when',
+    'features' => [
+      'group' => TRUE,
+    ],
+    'file' => 'components/tool_inputs_conditional_when.inc',
+  ];
+  //=========================== param type starts ==============================
+  // param is the most important element in galaxy tool configure file.
+  // let's create a webform component for each type of param.
+  $components['tool_inputs_param'] = [
+    'label' => 'tool->inputs->param',
+    'features' => [
+      'group' => TRUE,
+    ],
+    'file' => 'components/tool_inputs_param.inc',
+  ];
+  $components['tool_inputs_param_type_text'] = [
+    'label' => 'tool->inputs->param(type: text)',
+    'file' => 'components/params/param_type_text.inc',
+  ];
+  $components['tool_inputs_param_type_integer'] = [
+    'label' => 'tool->inputs->param(type: integer)',
+    'file' => 'components/params/param_type_integer.inc',
+  ];
+  $components['tool_inputs_param_type_float'] = [
+    'label' => 'tool->inputs->param(type: float)',
+    'file' => 'components/params/param_type_float.inc',
+  ];
+  $components['tool_inputs_param_type_boolean'] = [
+    'label' => 'tool->inputs->param(type: boolean)',
+    'file' => 'components/params/param_type_boolean.inc',
+  ];
+  $components['tool_inputs_param_type_data'] = [
+    'label' => 'tool->inputs->param(type: data)',
+    'file' => 'components/params/param_type_data.inc',
+  ];
+  $components['tool_inputs_param_type_select'] = [
+    'label' => 'tool->inputs->param(type: select)',
+    'features' => [
+      'group' => TRUE,
+    ],
+    'file' => 'components/params/param_type_select.inc',
+  ];
+  // TODO: param types
+  //  data_column
+  //  drill_down
+  //  data_collection
+  //  color
+  //=========================== param type ends ================================
+  $components['tool_inputs_param_validator'] = [
+    'label' => 'tool->inputs->param->validator',
+    'file' => 'components/tool_inputs_param_validator.inc',
+  ];
 
-    $components['tool_requirements'] = [
-        'label' => 'tool->requirements',
-        'features' => [
-            'group' => TRUE,
-        ],
-        'file' => 'components/tool_requirements.inc',
-    ];
-    $components['tool_requirements_requirement'] = [
-        'label' => 'tool->requirements->requirement',
-        'file' => 'components/tool_requirements_requirement.inc',
-    ];
-    $components['tool_requirements_container'] = [
-        'label' => 'tool->requirements->container',
-        'file' => 'components/tool_requirements_container.inc',
-    ];
-    $components['tool_outputs'] = [
-        'label' => 'tool->outputs',
-        'features' => [
-            'group' => TRUE,
-        ],
-        'file' => 'components/tool_outputs.inc',
-    ];
-    $components['tool_outputs_data'] = [
-        'label' => 'tool->outputs->data',
-        'features' => [
-            'group' => TRUE,
-        ],
-        'file' => 'components/tool_outputs_data.inc',
-    ];
-    $components['tool_outputs_data_filter'] = [
-        'label' => 'tool->outputs->data->filter',
-        'file' => 'components/tool_outputs_data_filter.inc',
-    ];
-    $components['tool_outputs_data_change_format'] = [
-        'label' => 'tool->outputs->data->change_format',
-        'features' => [
-            'group' => TRUE,
-        ],
-        'file' => 'components/tool_outputs_data_change_format.inc',
-    ];
-    $components['tool_outputs_data_change_format_when'] = [
-        'label' => 'tool->outputs->data->change_format->when',
-        'file' => 'components/tool_outputs_data_change_format_when.inc',
-    ];
-    $components['tool_stdio'] = [
-        'label' => 'tool->stdio',
-        'features' => [
-            'group' => TRUE,
-        ],
-        'file' => 'components/tool_stdio.inc',
-    ];
-    $components['tool_stdio_exit_code'] = [
-        'label' => 'tool->stdio->exit_code',
-        'file' => 'components/tool_stdio_exit_code.inc',
-    ];
-    $components['tool_stdio_regex'] = [
-        'label' => 'tool->stdio->regex',
-        'file' => 'components/tool_stdio_regex.inc',
-    ];
-    $components['tool_help'] = [
-        'label' => 'tool->help',
-        'file' => 'components/tool_help.inc',
-    ];
-    $components['tool_citations'] = [
-        'label' => 'tool->citations',
-        'features' => [
-            'group' => TRUE,
-        ],
-        'file' => 'components/tool_citations.inc',
-    ];
-    $components['tool_citations_citation'] = [
-        'label' => 'tool->citations->citation',
-        'file' => 'components/tool_citations_citation.inc',
-    ];
-    return $components;
+  $components['tool_requirements'] = [
+    'label' => 'tool->requirements',
+    'features' => [
+      'group' => TRUE,
+    ],
+    'file' => 'components/tool_requirements.inc',
+  ];
+  $components['tool_requirements_requirement'] = [
+    'label' => 'tool->requirements->requirement',
+    'file' => 'components/tool_requirements_requirement.inc',
+  ];
+  $components['tool_requirements_container'] = [
+    'label' => 'tool->requirements->container',
+    'file' => 'components/tool_requirements_container.inc',
+  ];
+  $components['tool_outputs'] = [
+    'label' => 'tool->outputs',
+    'features' => [
+      'group' => TRUE,
+    ],
+    'file' => 'components/tool_outputs.inc',
+  ];
+  $components['tool_outputs_data'] = [
+    'label' => 'tool->outputs->data',
+    'features' => [
+      'group' => TRUE,
+    ],
+    'file' => 'components/tool_outputs_data.inc',
+  ];
+  $components['tool_outputs_data_filter'] = [
+    'label' => 'tool->outputs->data->filter',
+    'file' => 'components/tool_outputs_data_filter.inc',
+  ];
+  $components['tool_outputs_data_change_format'] = [
+    'label' => 'tool->outputs->data->change_format',
+    'features' => [
+      'group' => TRUE,
+    ],
+    'file' => 'components/tool_outputs_data_change_format.inc',
+  ];
+  $components['tool_outputs_data_change_format_when'] = [
+    'label' => 'tool->outputs->data->change_format->when',
+    'file' => 'components/tool_outputs_data_change_format_when.inc',
+  ];
+  $components['tool_stdio'] = [
+    'label' => 'tool->stdio',
+    'features' => [
+      'group' => TRUE,
+    ],
+    'file' => 'components/tool_stdio.inc',
+  ];
+  $components['tool_stdio_exit_code'] = [
+    'label' => 'tool->stdio->exit_code',
+    'file' => 'components/tool_stdio_exit_code.inc',
+  ];
+  $components['tool_stdio_regex'] = [
+    'label' => 'tool->stdio->regex',
+    'file' => 'components/tool_stdio_regex.inc',
+  ];
+  $components['tool_help'] = [
+    'label' => 'tool->help',
+    'file' => 'components/tool_help.inc',
+  ];
+  $components['tool_citations'] = [
+    'label' => 'tool->citations',
+    'features' => [
+      'group' => TRUE,
+    ],
+    'file' => 'components/tool_citations.inc',
+  ];
+  $components['tool_citations_citation'] = [
+    'label' => 'tool->citations->citation',
+    'file' => 'components/tool_citations_citation.inc',
+  ];
+  return $components;
 }
 
 /**
  * Implements hook_form_FORM_ID_alter().
  */
-function galaxy_tool_generator_form_webform_component_edit_form_alter(&$form, &$form_state, $form_id)
-{
-    $component = $form['type']['#value'];
-    switch ($component) {
-        case 'tool':
-            edit_component_tool($form);
-            break;
-        case 'tool_description':
-            edit_component_tool_description($form);
-            break;
-        case 'tool_version_command':
-            edit_component_tool_version_command($form);
-            break;
-        case 'tool_command':
-            edit_component_tool_command($form);
-            break;
-        case 'tool_inputs':
-            edit_component_tool_inputs($form);
-            break;
-        case 'tool_inputs_section':
-            edit_component_tool_inputs_section($form);
-            break;
-        case 'tool_inputs_repeat':
-            edit_component_tool_inputs_repeat($form);
-            break;
-        case 'tool_inputs_conditional':
-            edit_component_tool_inputs_conditional($form);
-            break;
-        case 'tool_inputs_conditional_when':
-            edit_component_tool_inputs_conditional_when($form);
-            break;
-        case 'tool_inputs_param_type_text':
-            edit_component_tool_inputs_param_type_text($form);
-            break;
-        case 'tool_inputs_param_type_integer':
-            edit_component_tool_inputs_param_type_integer($form);
-            break;
-        case 'tool_inputs_param_type_float':
-            edit_component_tool_inputs_param_type_float($form);
-            break;
-        case 'tool_inputs_param_type_boolean':
-            edit_component_tool_inputs_param_type_boolean($form);
-            break;
-        case 'tool_inputs_param_type_data':
-            edit_component_tool_inputs_param_type_data($form);
-            break;
-        case 'tool_inputs_param_type_select':
-            edit_component_tool_inputs_param_type_select($form);
-            break;
-        // TODO: param types
-        //==================
-        case 'tool_inputs_param_validator':
-            edit_component_tool_inputs_param_validator($form);
-            break;
-        case 'tool_requirements':
-            edit_component_tool_requirements($form);
-            break;
-        case 'tool_requirements_requirement':
-            edit_component_tool_requirements_requirement($form);
-            break;
-        case 'tool_requirements_container':
-            edit_component_tool_requirements_container($form);
-            break;
-        case 'tool_outputs':
-            edit_component_tool_outputs($form);
-            break;
-        case 'tool_outputs_data':
-            edit_component_tool_outputs_data($form);
-            break;
-        case 'tool_outputs_data_filter':
-            edit_component_tool_outputs_data_filter($form);
-            break;
-        case 'tool_outputs_data_change_format':
-            edit_component_tool_outputs_data_change_format($form);
-            break;
-        case 'tool_outputs_data_change_format_when':
-            edit_component_tool_outputs_data_change_format_when($form);
-            break;
-        case 'tool_stdio':
-            edit_component_tool_stdio($form);
-            break;
-        case 'tool_stdio_exit_code':
-            edit_component_tool_stdio_exit_code($form);
-            break;
-        case 'tool_stdio_regex':
-            edit_component_tool_stdio_regex($form);
-            break;
-        case 'tool_help':
-            edit_component_tool_help($form);
-            break;
-        case 'tool_citations':
-            edit_component_tool_citations($form);
-            break;
-        case 'tool_citations_citation':
-            edit_component_tool_citations_citation($form);
-            break;
-    }
+function galaxy_tool_generator_form_webform_component_edit_form_alter(&$form, &$form_state, $form_id) {
+  $component = $form['type']['#value'];
+  switch ($component) {
+    case 'tool':
+      edit_component_tool($form);
+      break;
+    case 'tool_description':
+      edit_component_tool_description($form);
+      break;
+    case 'tool_version_command':
+      edit_component_tool_version_command($form);
+      break;
+    case 'tool_command':
+      edit_component_tool_command($form);
+      break;
+    case 'tool_inputs':
+      edit_component_tool_inputs($form);
+      break;
+    case 'tool_inputs_section':
+      edit_component_tool_inputs_section($form);
+      break;
+    case 'tool_inputs_repeat':
+      edit_component_tool_inputs_repeat($form);
+      break;
+    case 'tool_inputs_conditional':
+      edit_component_tool_inputs_conditional($form);
+      break;
+    case 'tool_inputs_conditional_when':
+      edit_component_tool_inputs_conditional_when($form);
+      break;
+    case 'tool_inputs_param_type_text':
+      edit_component_tool_inputs_param_type_text($form);
+      break;
+    case 'tool_inputs_param_type_integer':
+      edit_component_tool_inputs_param_type_integer($form);
+      break;
+    case 'tool_inputs_param_type_float':
+      edit_component_tool_inputs_param_type_float($form);
+      break;
+    case 'tool_inputs_param_type_boolean':
+      edit_component_tool_inputs_param_type_boolean($form);
+      break;
+    case 'tool_inputs_param_type_data':
+      edit_component_tool_inputs_param_type_data($form);
+      break;
+    case 'tool_inputs_param_type_select':
+      edit_component_tool_inputs_param_type_select($form);
+      break;
+    // TODO: param types
+    //==================
+    case 'tool_inputs_param_validator':
+      edit_component_tool_inputs_param_validator($form);
+      break;
+    case 'tool_requirements':
+      edit_component_tool_requirements($form);
+      break;
+    case 'tool_requirements_requirement':
+      edit_component_tool_requirements_requirement($form);
+      break;
+    case 'tool_requirements_container':
+      edit_component_tool_requirements_container($form);
+      break;
+    case 'tool_outputs':
+      edit_component_tool_outputs($form);
+      break;
+    case 'tool_outputs_data':
+      edit_component_tool_outputs_data($form);
+      break;
+    case 'tool_outputs_data_filter':
+      edit_component_tool_outputs_data_filter($form);
+      break;
+    case 'tool_outputs_data_change_format':
+      edit_component_tool_outputs_data_change_format($form);
+      break;
+    case 'tool_outputs_data_change_format_when':
+      edit_component_tool_outputs_data_change_format_when($form);
+      break;
+    case 'tool_stdio':
+      edit_component_tool_stdio($form);
+      break;
+    case 'tool_stdio_exit_code':
+      edit_component_tool_stdio_exit_code($form);
+      break;
+    case 'tool_stdio_regex':
+      edit_component_tool_stdio_regex($form);
+      break;
+    case 'tool_help':
+      edit_component_tool_help($form);
+      break;
+    case 'tool_citations':
+      edit_component_tool_citations($form);
+      break;
+    case 'tool_citations_citation':
+      edit_component_tool_citations_citation($form);
+      break;
+  }
 }
 
 /**
  * Implements hook_form_alter().
  */
-function galaxy_tool_generator_form_alter(&$form, &$form_state, $form_id)
-{
-    if (!isset($form_state['webform']['component_tree'])) {
-        // no webform components, no need to alter form.
-        return;
-    } else {
-        $galaxy_tool = $form_state['webform']['component_tree'];
-        // check if webform has only one component.
-        if (count($galaxy_tool['children']) != 1) {
-            return drupal_set_message('The top webform should only have one Galaxy tool element.', 'warning');
-        }
-
-        // check if the first child is 'tool'
-        if (!isset($galaxy_tool['children'][1]['extra']) | $galaxy_tool['children'][1]['extra']['galaxy_tool_xml_tag'] != 'tool') {
-            return drupal_set_message('All galaxy tool element need to be wrapped within 
-                the <span style="color: #FF5666">&lt;tool&gt;&lt;/tool&gt;</span> tag.');
-        }
+function galaxy_tool_generator_form_alter(&$form, &$form_state, $form_id) {
+  if (!isset($form_state['webform']['component_tree'])) {
+    // no webform components, no need to alter form.
+    return;
+  }
+  else {
+    $galaxy_tool = $form_state['webform']['component_tree'];
+    // check if webform has only one component.
+    if (count($galaxy_tool['children']) != 1) {
+      return drupal_set_message('The top webform should only have one Galaxy tool element.', 'warning');
     }
 
-    // This form is not supposed to be submitted, so unset #submit button.
-    unset($form['actions']);
+    // check if the first child is 'tool'
+    if (!isset($galaxy_tool['children'][1]['extra']) | $galaxy_tool['children'][1]['extra']['galaxy_tool_xml_tag'] != 'tool') {
+      return drupal_set_message('All galaxy tool element need to be wrapped within 
+                the <span style="color: #FF5666">&lt;tool&gt;&lt;/tool&gt;</span> tag.');
+    }
+  }
+
+  // This form is not supposed to be submitted, so unset #submit button.
+  unset($form['actions']);
 }
 
 /**
@@ -325,31 +323,30 @@ function galaxy_tool_generator_form_alter(&$form, &$form_state, $form_id)
  *
  * alter webform_components_form to remove unwanted webform component types.
  */
-function galaxy_tool_generator_form_webform_components_form_alter(&$form, &$form_state)
-{
-    $webform_component_types = $form['add']['type']['#options'];
-    $unwanted_component_types = [
-        'date',
-        'email',
-        'fieldset',
-        'file',
-        'grid',
-        'hidden',
-        'markup',
-        'number',
-        'pagebreak',
-        'select',
-        'textarea',
-        'textfield',
-        'time'
-    ];
-    foreach ($webform_component_types as $key => $type) {
-        if (in_array($key, $unwanted_component_types)) {
-            unset($webform_component_types[$key]);
-        }
+function galaxy_tool_generator_form_webform_components_form_alter(&$form, &$form_state) {
+  $webform_component_types = $form['add']['type']['#options'];
+  $unwanted_component_types = [
+    'date',
+    'email',
+    'fieldset',
+    'file',
+    'grid',
+    'hidden',
+    'markup',
+    'number',
+    'pagebreak',
+    'select',
+    'textarea',
+    'textfield',
+    'time',
+  ];
+  foreach ($webform_component_types as $key => $type) {
+    if (in_array($key, $unwanted_component_types)) {
+      unset($webform_component_types[$key]);
     }
-    // update component type options
-    $form['add']['type']['#options'] = $webform_component_types;
+  }
+  // update component type options
+  $form['add']['type']['#options'] = $webform_component_types;
 }
 
 
