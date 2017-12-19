@@ -32,6 +32,8 @@ function edit_component_tool_inputs_param_type_data_column(&$form) {
   $form['extra']['attributes']['force_select'] = [
     '#type' => 'radios',
     '#title' => t('Force select'),
+    '#description' => t('Used only if the <span style="color: #FF5666">type</span> attribute value is <span style="color: #FF5666">data_column</span>, 
+      this is deprecated and the inverse of <span style="color: #FF5666">optional</span>. Set to <span style="color: #FF5666">false</span> to not force user to select an option in the list.'),
     '#options' => drupal_map_assoc([
       'true',
       'false',
@@ -41,6 +43,8 @@ function edit_component_tool_inputs_param_type_data_column(&$form) {
   $form['extra']['attributes']['numerical'] = [
     '#type' => 'radios',
     '#title' => t('Numerical'),
+    '#description' => t('Used only if the <span style="color: #FF5666">type</span> attribute value is <span style="color: #FF5666">data_column</span>, 
+      if <span style="color: #FF5666">true</span> the column will be treated as numerical when filtering columns based on metadata.'),
     '#options' => drupal_map_assoc([
       'true',
       'false',
