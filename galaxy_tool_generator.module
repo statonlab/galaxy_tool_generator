@@ -103,6 +103,13 @@ function galaxy_tool_generator_webform_component_info() {
     ],
     'file' => 'components/params/param_type_select.inc',
   ];
+  $components['tool_inputs_param_type_data_column'] = [
+    'label' => 'tool->inputs->param(type: data_column)',
+    'features' => [
+      'group' => TRUE,
+    ],
+    'file' => 'components/params/param_type_data_column.inc',
+  ];
   // TODO: param types
   //  data_column
   //  drill_down
@@ -224,6 +231,7 @@ function galaxy_tool_generator_form_webform_component_edit_form_alter(&$form, &$
     case 'tool_inputs_conditional_when':
       edit_component_tool_inputs_conditional_when($form);
       break;
+    // split the single tool > inputs > param tag into multiple tags by param type.
     case 'tool_inputs_param_type_text':
       edit_component_tool_inputs_param_type_text($form);
       break;
@@ -242,7 +250,12 @@ function galaxy_tool_generator_form_webform_component_edit_form_alter(&$form, &$
     case 'tool_inputs_param_type_select':
       edit_component_tool_inputs_param_type_select($form);
       break;
+    case 'tool_inputs_param_type_data_column':
+      edit_component_tool_inputs_param_type_data_column($form);
+      break;
+
     // TODO: param types
+    // end of tool > inputs > param tag
     //==================
     case 'tool_inputs_param_validator':
       edit_component_tool_inputs_param_validator($form);
