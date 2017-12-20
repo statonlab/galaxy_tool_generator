@@ -343,8 +343,18 @@ function galaxy_tool_generator_webform_component_info() {
     'label' => 'tool->tests->test->output->metadata',
     'file' => 'components/tool_tests_test_output_metadata.inc',
   ];
-
-
+  // TODO: tool > tests > test > output > assert_contents
+  $components['tool_tests_test_output_collection'] = [
+    'label' => 'tool->tests->test->output_collection',
+    'file' => 'components/tool_tests_test_output_collection.inc',
+  ];
+  // TODO: tool > tests > test > assert_command
+  // TODO: tool > tests > test > assert_stdout
+  // TODO: tool > tests > test > assert_stderr
+  $components['tool_code'] = [
+    'label' => 'tool->code',
+    'file' => 'components/tool_code.inc',
+  ];
   $components['tool_requirements'] = [
     'label' => 'tool->requirements',
     'features' => [
@@ -360,9 +370,6 @@ function galaxy_tool_generator_webform_component_info() {
     'label' => 'tool->requirements->container',
     'file' => 'components/tool_requirements_container.inc',
   ];
-
-
-
   $components['tool_stdio'] = [
     'label' => 'tool->stdio',
     'features' => [
@@ -578,7 +585,12 @@ function galaxy_tool_generator_form_webform_component_edit_form_alter(&$form, &$
     case 'tool_tests_test_output_metadata':
       edit_component_tool_tests_test_output_metadata($form);
       break;
-
+    case 'tool_tests_test_output_collection':
+      edit_component_tool_tests_test_output_collection($form);
+      break;
+    case 'tool_code':
+      edit_component_tool_code($form);
+      break;
     case 'tool_requirements':
       edit_component_tool_requirements($form);
       break;
@@ -588,10 +600,6 @@ function galaxy_tool_generator_form_webform_component_edit_form_alter(&$form, &$
     case 'tool_requirements_container':
       edit_component_tool_requirements_container($form);
       break;
-
-
-
-
     case 'tool_stdio':
       edit_component_tool_stdio($form);
       break;
