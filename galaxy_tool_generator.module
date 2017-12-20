@@ -205,6 +205,17 @@ function galaxy_tool_generator_webform_component_info() {
     'label' => 'tool->configfiles->inputs',
     'file' => 'components/tool_configfiles_inputs.inc',
   ];
+  $components['tool_environment_variables'] = [
+    'label' => 'tool->environment_variables',
+    'features' => [
+      'group' => TRUE,
+    ],
+    'file' => 'components/tool_environment_variables.inc',
+  ];
+  $components['tool_environment_variables_environment_variable'] = [
+    'label' => 'tool->environment_variables->environment_variable',
+    'file' => 'components/tool_environment_variables_environment_variable.inc',
+  ];
 
 
 
@@ -395,7 +406,12 @@ function galaxy_tool_generator_form_webform_component_edit_form_alter(&$form, &$
     case 'tool_configfiles_inputs':
       edit_component_tool_configfiles_inputs($form);
       break;
-
+    case 'tool_environment_variables':
+      edit_component_tool_environment_variables($form);
+      break;
+    case 'tool_environment_variables_environment_variable':
+      edit_component_tool_environment_variables_environment_variable($form);
+      break;
 
 
 
