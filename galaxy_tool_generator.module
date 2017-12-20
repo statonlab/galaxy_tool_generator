@@ -160,6 +160,21 @@ function galaxy_tool_generator_webform_component_info() {
     ],
     'file' => 'components/tool_inputs_param_sanitizer.inc',
   ];
+  $components['tool_inputs_param_sanitizer_valid'] = [
+    'label' => 'tool->inputs->param->sanitizer->valid',
+    'features' => [
+      'group' => TRUE,
+    ],
+    'file' => 'components/tool_inputs_param_sanitizer_valid.inc',
+  ];
+  $components['tool_inputs_param_sanitizer_valid_add'] = [
+    'label' => 'tool->inputs->param->sanitizer->valid->add',
+    'file' => 'components/tool_inputs_param_sanitizer_valid_add.inc',
+  ];
+  $components['tool_inputs_param_sanitizer_valid_remove'] = [
+    'label' => 'tool->inputs->param->sanitizer->valid->remove',
+    'file' => 'components/tool_inputs_param_sanitizer_valid_remove.inc',
+  ];
 
   $components['tool_requirements'] = [
     'label' => 'tool->requirements',
@@ -322,6 +337,16 @@ function galaxy_tool_generator_form_webform_component_edit_form_alter(&$form, &$
     case 'tool_inputs_param_sanitizer':
       edit_component_tool_inputs_param_sanitizer($form);
       break;
+    case 'tool_inputs_param_sanitizer_valid':
+      edit_component_tool_inputs_param_sanitizer_valid($form);
+      break;
+    case 'tool_inputs_param_sanitizer_valid_add':
+      edit_component_tool_inputs_param_sanitizer_valid_add($form);
+      break;
+    case 'tool_inputs_param_sanitizer_valid_remove':
+      edit_component_tool_inputs_param_sanitizer_valid_remove($form);
+      break;
+
     case 'tool_requirements':
       edit_component_tool_requirements($form);
       break;
