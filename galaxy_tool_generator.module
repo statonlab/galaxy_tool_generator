@@ -267,6 +267,10 @@ function galaxy_tool_generator_webform_component_info() {
     'label' => 'tool->outputs->data->actions->action',
     'file' => 'components/tool_outputs_data_actions_action.inc',
   ];
+  $components['tool_outputs_data_discover_datasets'] = [
+    'label' => 'tool->outputs->data->discover_datasets',
+    'file' => 'components/tool_outputs_data_discover_datasets.inc',
+  ];
 
 
   $components['tool_requirements'] = [
@@ -463,7 +467,9 @@ function galaxy_tool_generator_form_webform_component_edit_form_alter(&$form, &$
     case 'tool_outputs_data_actions_action':
       edit_component_tool_outputs_data_actions_action($form);
       break;
-
+    case 'tool_outputs_data_discover_datasets':
+      edit_component_tool_outputs_data_discover_datasets($form);
+      break;
 
     case 'tool_requirements':
       edit_component_tool_requirements($form);
