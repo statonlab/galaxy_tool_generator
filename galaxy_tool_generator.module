@@ -186,6 +186,21 @@ function galaxy_tool_generator_webform_component_info() {
     'label' => 'tool->inputs->param->sanitizer->mapping->add',
     'file' => 'components/tool_inputs_param_sanitizer_mapping_add.inc',
   ];
+  $components['tool_inputs_param_sanitizer_mapping_remove'] = [
+    'label' => 'tool->inputs->param->sanitizer->mapping->remove',
+    'file' => 'components/tool_inputs_param_sanitizer_mapping_remove.inc',
+  ];
+  $components['tool_configfiles'] = [
+    'label' => 'tool->configfiles',
+    'features' => [
+      'group' => TRUE,
+    ],
+    'file' => 'components/tool_configfiles.inc',
+  ];
+  $components['tool_configfiles_configfile'] = [
+    'label' => 'tool->configfiles->configfile',
+    'file' => 'components/tool_configfiles_configfile.inc',
+  ];
 
 
 
@@ -364,6 +379,19 @@ function galaxy_tool_generator_form_webform_component_edit_form_alter(&$form, &$
     case 'tool_inputs_param_sanitizer_mapping_add':
       edit_component_tool_inputs_param_sanitizer_mapping_add($form);
       break;
+    case 'tool_inputs_param_sanitizer_mapping_remove':
+      edit_component_tool_inputs_param_sanitizer_mapping_remove($form);
+      break;
+    case 'tool_configfiles':
+      edit_component_tool_configfiles($form);
+      break;
+    case 'tool_configfiles_configfile':
+      edit_component_tool_configfiles_configfile($form);
+      break;
+
+
+
+
 
     case 'tool_requirements':
       edit_component_tool_requirements($form);

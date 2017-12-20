@@ -67,6 +67,7 @@ function get_component_render_array($component_name, $component, $fieldset_title
     'tool_version_command',
     'tool_help',
     'tool_citations_citation',
+    'tool_configfiles_configfile',
   ])) {
     $markup = '&lt;<span style="color: #19B5FE"><b>' . $component['extra']['galaxy_tool_xml_tag'] . '</b></span> ' .
       $attribute_value_pairs . '&gt;![CDATA[<br/>' .
