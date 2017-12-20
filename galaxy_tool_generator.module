@@ -332,6 +332,13 @@ function galaxy_tool_generator_webform_component_info() {
     ],
     'file' => 'components/tool_tests_test_output.inc',
   ];
+  $components['tool_tests_test_output_discover_dataset'] = [
+    'label' => 'tool->tests->test->output->discover_dataset',
+    'features' => [
+      'group' => TRUE,
+    ],
+    'file' => 'components/tool_tests_test_output_discover_dataset.inc',
+  ];
 
 
   $components['tool_requirements'] = [
@@ -560,6 +567,9 @@ function galaxy_tool_generator_form_webform_component_edit_form_alter(&$form, &$
       break;
     case 'tool_tests_test_output':
       edit_component_tool_tests_test_output($form);
+      break;
+    case 'tool_tests_test_output_discover_dataset':
+      edit_component_tool_tests_test_output_discover_dataset($form);
       break;
 
     case 'tool_requirements':
