@@ -138,6 +138,17 @@ function galaxy_tool_generator_webform_component_info() {
     'label' => 'tool->inputs->param->option',
     'file' => 'components/tool_inputs_param_option.inc',
   ];
+  $components['tool_inputs_param_options'] = [
+    'label' => 'tool->inputs->param->options',
+    'features' => [
+      'group' => TRUE,
+    ],
+    'file' => 'components/tool_inputs_param_options.inc',
+  ];
+  $components['tool_inputs_param_options_column'] = [
+    'label' => 'tool->inputs->param->options->column',
+    'file' => 'components/tool_inputs_param_options_column.inc',
+  ];
 
   $components['tool_requirements'] = [
     'label' => 'tool->requirements',
@@ -286,6 +297,13 @@ function galaxy_tool_generator_form_webform_component_edit_form_alter(&$form, &$
       break;
     case 'tool_inputs_param_option':
       edit_component_tool_inputs_param_option($form);
+      break;
+      // TODO: param conversion
+    case 'tool_inputs_param_options':
+      edit_component_tool_inputs_param_options($form);
+      break;
+    case 'tool_inputs_param_options_column':
+      edit_component_tool_inputs_param_options_column($form);
       break;
     case 'tool_requirements':
       edit_component_tool_requirements($form);
