@@ -134,6 +134,10 @@ function galaxy_tool_generator_webform_component_info() {
     'label' => 'tool->inputs->param->validator',
     'file' => 'components/tool_inputs_param_validator.inc',
   ];
+  $components['tool_inputs_param_option'] = [
+    'label' => 'tool->inputs->param->option',
+    'file' => 'components/tool_inputs_param_option.inc',
+  ];
 
   $components['tool_requirements'] = [
     'label' => 'tool->requirements',
@@ -279,6 +283,9 @@ function galaxy_tool_generator_form_webform_component_edit_form_alter(&$form, &$
     //==================
     case 'tool_inputs_param_validator':
       edit_component_tool_inputs_param_validator($form);
+      break;
+    case 'tool_inputs_param_option':
+      edit_component_tool_inputs_param_option($form);
       break;
     case 'tool_requirements':
       edit_component_tool_requirements($form);
