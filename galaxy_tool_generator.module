@@ -304,6 +304,34 @@ function galaxy_tool_generator_webform_component_info() {
     'label' => 'tool->tests->test->param',
     'file' => 'components/tool_tests_test_param.inc',
   ];
+  $components['tool_tests_test_repeat'] = [
+    'label' => 'tool->tests->test->repeat',
+    'features' => [
+      'group' => TRUE,
+    ],
+    'file' => 'components/tool_tests_test_repeat.inc',
+  ];
+  $components['tool_tests_test_section'] = [
+    'label' => 'tool->tests->test->section',
+    'features' => [
+      'group' => TRUE,
+    ],
+    'file' => 'components/tool_tests_test_section.inc',
+  ];
+  $components['tool_tests_test_conditional'] = [
+    'label' => 'tool->tests->test->conditional',
+    'features' => [
+      'group' => TRUE,
+    ],
+    'file' => 'components/tool_tests_test_conditional.inc',
+  ];
+  $components['tool_tests_test_output'] = [
+    'label' => 'tool->tests->test->output',
+    'features' => [
+      'group' => TRUE,
+    ],
+    'file' => 'components/tool_tests_test_output.inc',
+  ];
 
 
   $components['tool_requirements'] = [
@@ -520,6 +548,18 @@ function galaxy_tool_generator_form_webform_component_edit_form_alter(&$form, &$
       break;
     case 'tool_tests_test_param':
       edit_component_tool_tests_test_param($form);
+      break;
+    case 'tool_tests_test_repeat':
+      edit_component_tool_tests_test_repeat($form);
+      break;
+    case 'tool_tests_test_section':
+      edit_component_tool_tests_test_section($form);
+      break;
+    case 'tool_tests_test_conditional':
+      edit_component_tool_tests_test_conditional($form);
+      break;
+    case 'tool_tests_test_output':
+      edit_component_tool_tests_test_output($form);
       break;
 
     case 'tool_requirements':
