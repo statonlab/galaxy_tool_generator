@@ -273,6 +273,9 @@ function galaxy_tool_generator_webform_component_info() {
   ];
   $components['tool_outputs_collection'] = [
     'label' => 'tool->outputs->collection',
+    'features' => [
+      'group' => TRUE,
+    ],
     'file' => 'components/tool_outputs_collection.inc',
   ];
 
