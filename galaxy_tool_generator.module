@@ -153,6 +153,13 @@ function galaxy_tool_generator_webform_component_info() {
     'label' => 'tool->inputs->param->options->filter',
     'file' => 'components/tool_inputs_param_options_filter.inc',
   ];
+  $components['tool_inputs_param_sanitizer'] = [
+    'label' => 'tool->inputs->param->sanitizer',
+    'features' => [
+      'group' => TRUE,
+    ],
+    'file' => 'components/tool_inputs_param_sanitizer.inc',
+  ];
 
   $components['tool_requirements'] = [
     'label' => 'tool->requirements',
@@ -311,6 +318,9 @@ function galaxy_tool_generator_form_webform_component_edit_form_alter(&$form, &$
       break;
     case 'tool_inputs_param_options_filter':
       edit_component_tool_inputs_param_options_filter($form);
+      break;
+    case 'tool_inputs_param_sanitizer':
+      edit_component_tool_inputs_param_sanitizer($form);
       break;
     case 'tool_requirements':
       edit_component_tool_requirements($form);
