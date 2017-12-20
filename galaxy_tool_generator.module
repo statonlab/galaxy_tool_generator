@@ -216,24 +216,6 @@ function galaxy_tool_generator_webform_component_info() {
     'label' => 'tool->environment_variables->environment_variable',
     'file' => 'components/tool_environment_variables_environment_variable.inc',
   ];
-
-
-
-  $components['tool_requirements'] = [
-    'label' => 'tool->requirements',
-    'features' => [
-      'group' => TRUE,
-    ],
-    'file' => 'components/tool_requirements.inc',
-  ];
-  $components['tool_requirements_requirement'] = [
-    'label' => 'tool->requirements->requirement',
-    'file' => 'components/tool_requirements_requirement.inc',
-  ];
-  $components['tool_requirements_container'] = [
-    'label' => 'tool->requirements->container',
-    'file' => 'components/tool_requirements_container.inc',
-  ];
   $components['tool_outputs'] = [
     'label' => 'tool->outputs',
     'features' => [
@@ -263,6 +245,48 @@ function galaxy_tool_generator_webform_component_info() {
     'label' => 'tool->outputs->data->change_format->when',
     'file' => 'components/tool_outputs_data_change_format_when.inc',
   ];
+  $components['tool_outputs_data_actions'] = [
+    'label' => 'tool->outputs->data->actions',
+    'features' => [
+      'group' => TRUE,
+    ],
+    'file' => 'components/tool_outputs_data_actions.inc',
+  ];
+  $components['tool_outputs_data_actions_conditional'] = [
+    'label' => 'tool->outputs->data->actions->conditional',
+    'features' => [
+      'group' => TRUE,
+    ],
+    'file' => 'components/tool_outputs_data_actions_conditional.inc',
+  ];
+  $components['tool_outputs_data_actions_conditional_when'] = [
+    'label' => 'tool->outputs->data->actions->conditional->when',
+    'file' => 'components/tool_outputs_data_actions_conditional_when.inc',
+  ];
+  $components['tool_outputs_data_actions_action'] = [
+    'label' => 'tool->outputs->data->actions->action',
+    'file' => 'components/tool_outputs_data_actions_action.inc',
+  ];
+
+
+  $components['tool_requirements'] = [
+    'label' => 'tool->requirements',
+    'features' => [
+      'group' => TRUE,
+    ],
+    'file' => 'components/tool_requirements.inc',
+  ];
+  $components['tool_requirements_requirement'] = [
+    'label' => 'tool->requirements->requirement',
+    'file' => 'components/tool_requirements_requirement.inc',
+  ];
+  $components['tool_requirements_container'] = [
+    'label' => 'tool->requirements->container',
+    'file' => 'components/tool_requirements_container.inc',
+  ];
+
+
+
   $components['tool_stdio'] = [
     'label' => 'tool->stdio',
     'features' => [
@@ -412,19 +436,6 @@ function galaxy_tool_generator_form_webform_component_edit_form_alter(&$form, &$
     case 'tool_environment_variables_environment_variable':
       edit_component_tool_environment_variables_environment_variable($form);
       break;
-
-
-
-
-    case 'tool_requirements':
-      edit_component_tool_requirements($form);
-      break;
-    case 'tool_requirements_requirement':
-      edit_component_tool_requirements_requirement($form);
-      break;
-    case 'tool_requirements_container':
-      edit_component_tool_requirements_container($form);
-      break;
     case 'tool_outputs':
       edit_component_tool_outputs($form);
       break;
@@ -440,6 +451,33 @@ function galaxy_tool_generator_form_webform_component_edit_form_alter(&$form, &$
     case 'tool_outputs_data_change_format_when':
       edit_component_tool_outputs_data_change_format_when($form);
       break;
+    case 'tool_outputs_data_actions':
+      edit_component_tool_outputs_data_actions($form);
+      break;
+    case 'tool_outputs_data_actions_conditional':
+      edit_component_tool_outputs_data_actions_conditional($form);
+      break;
+    case 'tool_outputs_data_actions_conditional_when':
+      edit_component_tool_outputs_data_actions_conditional_when($form);
+      break;
+    case 'tool_outputs_data_actions_action':
+      edit_component_tool_outputs_data_actions_action($form);
+      break;
+
+
+    case 'tool_requirements':
+      edit_component_tool_requirements($form);
+      break;
+    case 'tool_requirements_requirement':
+      edit_component_tool_requirements_requirement($form);
+      break;
+    case 'tool_requirements_container':
+      edit_component_tool_requirements_container($form);
+      break;
+
+
+
+
     case 'tool_stdio':
       edit_component_tool_stdio($form);
       break;
