@@ -175,6 +175,19 @@ function galaxy_tool_generator_webform_component_info() {
     'label' => 'tool->inputs->param->sanitizer->valid->remove',
     'file' => 'components/tool_inputs_param_sanitizer_valid_remove.inc',
   ];
+  $components['tool_inputs_param_sanitizer_mapping'] = [
+    'label' => 'tool->inputs->param->sanitizer->mapping',
+    'features' => [
+      'group' => TRUE,
+    ],
+    'file' => 'components/tool_inputs_param_sanitizer_mapping.inc',
+  ];
+  $components['tool_inputs_param_sanitizer_mapping_add'] = [
+    'label' => 'tool->inputs->param->sanitizer->mapping->add',
+    'file' => 'components/tool_inputs_param_sanitizer_mapping_add.inc',
+  ];
+
+
 
   $components['tool_requirements'] = [
     'label' => 'tool->requirements',
@@ -314,7 +327,6 @@ function galaxy_tool_generator_form_webform_component_edit_form_alter(&$form, &$
     case 'tool_inputs_param_type_data_collection':
       edit_component_tool_inputs_param_type_data_collection($form);
       break;
-
     // TODO: param types
     // end of tool > inputs > param tag
     //==================
@@ -345,6 +357,12 @@ function galaxy_tool_generator_form_webform_component_edit_form_alter(&$form, &$
       break;
     case 'tool_inputs_param_sanitizer_valid_remove':
       edit_component_tool_inputs_param_sanitizer_valid_remove($form);
+      break;
+    case 'tool_inputs_param_sanitizer_mapping':
+      edit_component_tool_inputs_param_sanitizer_mapping($form);
+      break;
+    case 'tool_inputs_param_sanitizer_mapping_add':
+      edit_component_tool_inputs_param_sanitizer_mapping_add($form);
       break;
 
     case 'tool_requirements':
