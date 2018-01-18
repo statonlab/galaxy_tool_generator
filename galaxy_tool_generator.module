@@ -676,8 +676,23 @@ function galaxy_tool_generator_form_webform_components_form_alter(&$form, &$form
   }
   // update component type options
   $form['add']['type']['#options'] = $webform_component_types;
+
+  // add custom submit function to redirect to webform node view page.
+  // because we need to be at the node view page to trigger the xml saving function.
+  $form['actions']['submit']['#submit'] = ['_redirect_to_node_view'];
 }
 
+
+/**
+ * @param $form
+ * @param $form_state
+ *
+ * submit function for webform_components_form.
+ * the goal is to redirect to webform node view page.
+ */
+function _redirect_to_node_view($form, &$form_state) {
+  $form_state['redirect'] = 'node/' . $form_state['values']['nid'];
+}
 
 
 
