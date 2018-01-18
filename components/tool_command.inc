@@ -60,8 +60,11 @@ function edit_component_tool_command(&$form) {
   $form['extra']['attributes']['XML_VALUE'] = [
     '#type' => 'textarea',
     '#title' => t('XML value'),
-    '#description' => t('The value will be placed within the XML tag pair.'),
+    '#description' => t('The shell script that will be added to the command section. It will
+      probably be easier to write your shell script on a shell script editor and then copy and
+      paste it to here.'),
     '#required' => TRUE,
+    '#rows' => 30,
   ];
 
   // grab populated data from 'extra' column from webform_component table and
