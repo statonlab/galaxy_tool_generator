@@ -308,9 +308,16 @@ function build_galaxy_tool_xml($webform_components) {
       $$xml_current_node = $xml->createElement($component['extra']['galaxy_tool_xml_tag']);
     }
     // set attributes
+
     $attributes = $component['extra']['attributes'];
     if (!empty($attributes)) {
-      foreach (array_filter($attributes) as $attribute => $value) {
+      // remove attribute items with value of NULL or ''.
+      foreach ($attributes as $key=>$value) {
+        if ($value == '' | $value == NULL) {
+          unset($attributes[$key]);
+        }
+      }
+      foreach ($attributes as $attribute => $value) {
         $$xml_current_node->setAttribute($attribute, $value);
       }
     }
