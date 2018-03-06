@@ -47,7 +47,7 @@ function edit_component_tool_inputs_param_option(&$form) {
     ]),
     '#default_value' => 'false',
   ];
-  $form['extra']['attributes']['XML_value'] = [
+  $form['extra']['attributes']['XML_VALUE'] = [
     '#type' => 'textfield',
     '#title' => t('XML value'),
     '#description' => t('This directive is used to described static lists of 
