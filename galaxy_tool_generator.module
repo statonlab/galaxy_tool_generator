@@ -78,6 +78,9 @@ function galaxy_tool_generator_webform_component_info() {
   ];
   $components['tool_inputs_param_type_text'] = [
     'label' => 'tool->inputs->param(type: text)',
+    'features' => [
+      'group' => TRUE,
+    ],
     'file' => 'components/params/param_type_text.inc',
   ];
   $components['tool_inputs_param_type_integer'] = [
