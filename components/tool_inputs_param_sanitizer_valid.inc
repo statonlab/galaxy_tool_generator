@@ -28,9 +28,9 @@ function edit_component_tool_inputs_param_sanitizer_valid(&$form) {
   $form = array_merge($form, get_edit_component_base_form_elements($form, 'valid'));
 
   // form field to edit attributes, available attributes for command includes:
-  $form['extra']['attributes']['valid'] = [
+  $form['extra']['attributes']['initial'] = [
     '#type' => 'textfield',
-    '#title' => t('Title'),
+    '#title' => t('Initial'),
     '#description' => t('This describes the initial characters to allow as valid, 
       the default is <span style="color: #FF5666"><code>string.letters + string.digits + " -=_.()/+*^,:?!"</code></span>'),
     '#default_value' => 'string.letters + string.digits + " -=_.()/+*^,:?!"'
