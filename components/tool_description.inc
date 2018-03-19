@@ -34,7 +34,7 @@ function edit_component_tool_description(&$form) {
     '#type' => 'textarea',
     '#title' => t('XML value'),
     '#description' => t('The value will be placed within the XML tag pair.'),
-    '#required' => TRUE,
+//    '#required' => TRUE,
   ];
 
   // grab populated data from 'extra' column from webform_component table and

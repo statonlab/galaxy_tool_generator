@@ -46,7 +46,7 @@ function edit_component_tool_requirements_requirement(&$form) {
       specific version of the tool dependency.'),
   ];
   $form['extra']['attributes']['XML_VALUE'] = [
-    '#type' => 'textarea',
+    '#type' => 'textfield',
     '#title' => t('Package name'),
     '#description' => t('An ' . l('anaconda', 'https://anaconda.org/anaconda/repo') . ' package name.'),
     '#required' => TRUE,
