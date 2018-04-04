@@ -42,6 +42,7 @@ function edit_component_tool_inputs_param_type_boolean(&$form) {
     '#description' => t('The parameter value in the Cheetah template if the 
       parameter is <span style="color: #FF5666">true</span> or checked by the user. 
       Only valid if <span style="color: #FF5666">type</span> is <span style="color: #FF5666">boolean</span>.'),
+    '#default_value' => 'NO_ARGUMENT_YES',
   ];
   $form['extra']['attributes']['falsevalue'] = [
     '#type' => 'textfield',
@@ -49,6 +50,7 @@ function edit_component_tool_inputs_param_type_boolean(&$form) {
     '#description' => t('The parameter value in the Cheetah template if the 
       parameter is <span style="color: #FF5666">false</span> or checked by the user. 
       Only valid if <span style="color: #FF5666">type</span> is <span style="color: #FF5666">boolean</span>.'),
+    '#default_value' => 'NO_ARGUMENT_NO',
   ];
 
   // grab populated data from 'extra' column from webform_component table and
