@@ -83,7 +83,11 @@ function edit_component_tool_outputs_collection(&$form) {
     '#type' => 'radios',
     '#title' => t('Inherit format'),
     '#description' => t('If <span style="color: #FF5666">structured_like</span> is set, 
-        inherit format of outputs from format of corresponding input.')
+        inherit format of outputs from format of corresponding input.'),
+    '#options' => drupal_map_assoc([
+      'true',
+      'false',
+    ]),
   ];
 
   // grab populated data from 'extra' column from webform_component table and

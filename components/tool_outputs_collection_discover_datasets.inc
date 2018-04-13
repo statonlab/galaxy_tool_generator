@@ -72,7 +72,7 @@ function edit_component_tool_outputs_collection_discover_datasets(&$form) {
       'true',
       'false',
     ]),
-    '#default_value' => 'true',
+    '#default_value' => 'false',
   ];
   $form['extra']['attributes']['assign_primary_output'] = [
     '#type' => 'radios',
