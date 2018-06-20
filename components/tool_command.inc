@@ -57,14 +57,15 @@ function edit_component_tool_command(&$form) {
         attribute on the command, but this is deprecated and using the <span style="color: #FF5666">
         $__tool_directory__</span> variable is superior.'),
   ];
+  $shell_file_name = preg_replace('/xml$/', 'sh', node_load($form['nid']['#value'])->title);
   $form['extra']['attributes']['XML_VALUE'] = [
     '#type' => 'textarea',
     '#title' => t('XML value'),
-    '#description' => t('The shell script that will be added to the command section. It will
-      probably be easier to write your shell script on a shell script editor and then copy and
-      paste it to here.'),
+    '#description' => t('There are two ways that you can add your shell script to the command section: 1) copy and paste your 
+      script to the text area above. 2) create a <span style="color: #FF5666">' . $shell_file_name . '</span> file in the 
+      <b>galaxy_tool_repository</b> folder and then click the <span style="color: #FF5666">VIEW/UPDATE XML</span> button twice.'),
     '#required' => TRUE,
-    '#rows' => 30,
+    //    '#rows' => 30,
   ];
 
   // grab populated data from 'extra' column from webform_component table and
