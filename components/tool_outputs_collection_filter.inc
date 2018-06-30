@@ -22,6 +22,9 @@ function _webform_render_tool_outputs_collection_filter($component, $value = NUL
  * Implement edit command function.
  */
 function edit_component_tool_outputs_collection_filter(&$form) {
+  // use current time as form_key to enable webform component clone.
+  $form['form_key']['#default_value'] = 'form_key_' . time();
+
   unset($form['validation']);
   unset($form['display']);
 

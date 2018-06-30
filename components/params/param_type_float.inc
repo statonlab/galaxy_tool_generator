@@ -18,6 +18,9 @@ function _webform_render_tool_inputs_param_type_float($component, $value = NULL,
  * Implement edit command function.
  */
 function edit_component_tool_inputs_param_type_float(&$form) {
+  // use current time as form_key to enable webform component clone.
+  $form['form_key']['#default_value'] = 'form_key_' . time();
+
   unset($form['validation']);
   unset($form['display']);
 
