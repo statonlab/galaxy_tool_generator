@@ -51,7 +51,7 @@ function edit_component_tool_requirements_requirement(&$form) {
   $form['extra']['attributes']['XML_VALUE'] = [
     '#type' => 'textfield',
     '#title' => t('Package name'),
-    '#description' => t('An ' . l('anaconda', 'https://anaconda.org/anaconda/repo') . ' package name.'),
+    '#description' => t('A package from the' . l(' bioconda', 'https://bioconda.github.io/recipes.html') . ' repository.' ),
     '#required' => TRUE,
   ];
 
