@@ -105,7 +105,7 @@ RUN yum -y update && \
 	pip install --upgrade setuptools && \
 	pip install planemo
 
-## Install php extension to handle yaml file	
+## Install php extension to handle yaml file
 RUN yum install -y php-yaml tree
 
 ## allow exec() function to run planemo as sudoer (https://exain.wordpress.com/2007/11/24/execute-system-commands-via-php/).
@@ -124,11 +124,7 @@ RUN rm -rf /var/lib/pgsql/data/postmaster.pid && \
     drush en devel admin_menu token page_load_progress -y && \
     drush dis toolbar -y && \
     mkdir GTG_modules && cd GTG_modules && \
-    yum install -y git && \
-    git clone https://github.com/MingChen0919/galaxy_tool_generator.git && \
-    git clone https://github.com/MingChen0919/galaxy_tool_generator_ui.git && \
-    drush en -y galaxy_tool_generator galaxy_tool_generator_ui
-
+    yum install -y git
 
 ## Install conda with planemo
 RUN yum -y install bzip2 && planemo conda_init

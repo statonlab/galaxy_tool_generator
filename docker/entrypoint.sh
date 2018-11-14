@@ -14,5 +14,6 @@ rm -f /usr/local/apache2/logs/httpd.pid
 /usr/sbin/httpd -DFOREGROUND
 
 # pull GTG modules updates
-cd /var/www/html/sites/all/modules/GTG_modules/galaxy_tool_generator_ui && git pull origin master
-cd /var/www/html/sites/all/modules/GTG_modules/galaxy_tool_generator && git pull origin master
+#cd /var/www/html/sites/all/modules/GTG_modules/galaxy_tool_generator_ui && git pull origin master
+#cd /var/www/html/sites/all/modules/GTG_modules/galaxy_tool_generator && git pull origin master
+#cd /var/www/html && drush en -y galaxy_tool_generator galaxy_tool_generator_ui
