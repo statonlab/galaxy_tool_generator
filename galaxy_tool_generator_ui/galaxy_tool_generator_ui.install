@@ -1,0 +1,213 @@
+<?php
+
+/**
+ * implements hook_install().
+ */
+function galaxy_tool_generator_ui_install() {
+  //  $menu_link = [
+  //    'menu_name' => 'main-menu',
+  //    'link_title' => 'Sign In/Up',
+  //    'link_path' => 'user',
+  //    'weight' => -50,
+  //  ];
+  //  menu_link_save($menu_link);
+  $menu_link = [
+    'menu_name' => 'main-menu',
+    'link_title' => 'GTG Flowchart',
+    'link_path' => 'gtg_flowchart',
+  ];
+  menu_link_save($menu_link);
+  $menu_link = [
+    'menu_name' => 'main-menu',
+    'link_title' => 'API Keys',
+    'link_path' => 'api_keys',
+  ];
+  menu_link_save($menu_link);
+  $menu_link = [
+    'menu_name' => 'main-menu',
+    'link_title' => 'Create Tool XML',
+    'link_path' => 'node/add/webform',
+    'weight' => 2,
+  ];
+  menu_link_save($menu_link);
+  $menu_link = [
+    'menu_name' => 'main-menu',
+    'link_title' => 'Build Tool Repository',
+    'link_path' => 'build_tool_repository',
+  ];
+  menu_link_save($menu_link);
+  $menu_link = [
+    'menu_name' => 'main-menu',
+    'link_title' => 'Publish Tool Repository',
+    'link_path' => 'publish_tool_repository',
+  ];
+  menu_link_save($menu_link);
+
+  $permissions = [
+    'create webform content',
+    'edit own webform content',
+    'delete own webform content',
+    'edit webform components',
+    'access overlay',
+  ];
+  // Anonymous users
+  user_role_grant_permissions(DRUPAL_ANONYMOUS_RID, $permissions);
+  // Authenticated users
+  user_role_grant_permissions(DRUPAL_AUTHENTICATED_RID, $permissions);
+
+  // delete Home menu_link.
+  db_delete('menu_links')
+    ->condition('link_title', 'Home')
+    ->execute();
+
+  // hide several blocks.
+  $blocks = ['navigation', 'login', 'powered-by', 'form'];
+  foreach ($blocks as $block) {
+    db_update('block')
+      ->fields([
+        'status' => 0,
+      ])
+      ->condition('delta', $block)
+      ->execute();
+  }
+
+  // Add columns to node table for galaxy tool xml info.
+  $galaxy_tool_xml = [
+    'galaxy_tool_xml_name' => [
+      'description' => 'the name of the tool xml file',
+      'type' => 'varchar',
+      'default' => '',
+      'not null' => TRUE,
+    ],
+    'tool_xml_fid' => [
+      'type' => 'int',
+      'default' => 0,
+      'not null' => TRUE,
+    ],
+    'tool_xml_uri' => [
+      'type' => 'varchar',
+      'default' => '',
+      'not null' => TRUE,
+      'length' => 255,
+    ],
+    'tool_description' => [
+      'type' => 'text',
+      'default' => '',
+      'not null' => TRUE,
+    ],
+    'tool_xml_type' => [
+      'type' => 'varchar',
+      'default' => '',
+      'not null' => TRUE,
+    ],
+  ];
+
+  if (!db_field_exists('node', 'galaxy_tool_xml_name')) {
+    db_add_field('node', 'galaxy_tool_xml_name', $galaxy_tool_xml['galaxy_tool_xml_name']);
+  }
+  if (!db_field_exists('node', 'tool_xml_fid')) {
+    db_add_field('node', 'tool_xml_fid', $galaxy_tool_xml['tool_xml_fid']);
+  }
+  if (!db_field_exists('node', 'tool_xml_uri')) {
+    db_add_field('node', 'tool_xml_uri', $galaxy_tool_xml['tool_xml_uri']);
+  }
+  if (!db_field_exists('node', 'tool_description')) {
+    db_add_field('node', 'tool_description', $galaxy_tool_xml['tool_description']);
+  }
+  if (!db_field_exists('node', 'tool_xml_type')) {
+    db_add_field('node', 'tool_xml_type', $galaxy_tool_xml['tool_xml_type']);
+  }
+
+
+}
+
+/**
+ * Implements hook_schema().
+ */
+function galaxy_tool_generator_ui_schema() {
+  $schema['galaxy_tool_generator_accounts'] = [
+    'description' => 'This table stores user names and API keys for galaxy tool generator',
+    'fields' => [
+      'gaid' => [
+        'description' => 'The primary identifier for an account.',
+        'type' => 'serial',
+        'unsigned' => TRUE,
+        'not null' => TRUE,
+      ],
+      'platform' => [
+        'description' => 'The platform that the account is associated',
+        'type' => 'varchar',
+        'default' => '',
+      ],
+      'username' => [
+        'description' => 'The account username',
+        'type' => 'varchar',
+        'default' => '',
+      ],
+      'api_key' => [
+        'description' => 'The account API key',
+        'type' => 'varchar',
+        'default' => '',
+      ],
+      'http_url' => [
+        'description' => 'The http url',
+        'type' => 'varchar',
+        'length' => 255,
+        'default' => '',
+      ],
+    ],
+    'primary key' => ['gaid'],
+  ];
+
+  $schema['galaxy_tool_xml'] = [
+    'description' => 'A table for galaxy tool xml files information',
+    'fields' => [
+      'tool_id' => [
+        'description' => 'the primary identifier for a tool xml',
+        'type' => 'serial',
+        'unsigned' => TRUE,
+        'not null' => TRUE,
+      ],
+      'tool_name' => [
+        'description' => 'the name of the tool xml file',
+        'type' => 'varchar',
+        'default' => '',
+        'not null' => TRUE,
+      ],
+      'tool_owner' => [
+        'type' => 'varchar',
+        'default' => '',
+        'not null' => TRUE,
+      ],
+      'tool_xml_fid' => [
+        'type' => 'int',
+        'default' => 0,
+        'not null' => TRUE,
+      ],
+      'synopsis' => [
+        'type' => 'varchar',
+        'default' => '',
+        'not null' => TRUE,
+        'length' => 255,
+      ],
+      'description' => [
+        'type' => 'text',
+        'default' => '',
+        'not null' => TRUE,
+      ],
+      'categories' => [
+        'type' => 'varchar',
+        'default' => '',
+        'not null' => TRUE,
+      ],
+      'galaxy_tool_xml_node' => [
+        'type' => 'int',
+        'not null' => TRUE,
+        'default' => 0,
+      ],
+    ],
+    'primary key' => ['tool_id', 'tool_xml_fid'],
+  ];
+  return $schema;
+}
+
