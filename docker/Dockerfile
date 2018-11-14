@@ -103,7 +103,8 @@ RUN yum -y update && \
     yum -y install python-devel libxslt-devel libffi-devel openssl-devel && \
 	yum -y install python-pip && \
 	pip install --upgrade setuptools && \
-	pip install planemo
+	pip install planemo && \
+	yum -y install bzip2 && planemo conda_init
 
 ## Install php extension to handle yaml file
 RUN yum install -y php-yaml tree
@@ -124,10 +125,9 @@ RUN rm -rf /var/lib/pgsql/data/postmaster.pid && \
     drush en devel admin_menu token page_load_progress -y && \
     drush dis toolbar -y && \
     mkdir GTG_modules && cd GTG_modules && \
-    yum install -y git
-
-## Install conda with planemo
-RUN yum -y install bzip2 && planemo conda_init
+    yum install -y git && \
+    git clone https://github.com/statonlab/galaxy_tool_generator.git && \
+    drush en -y galaxy_tool_generator galaxy_tool_generator_ui && \
 
 ADD entrypoint.sh /entrypoint.sh
 RUN chmod +x /entrypoint.sh
