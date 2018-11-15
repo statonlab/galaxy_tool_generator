@@ -122,12 +122,14 @@ RUN rm -rf /var/lib/pgsql/data/postmaster.pid && \
     sudo -u postgres pg_ctl start -D /var/lib/pgsql/data/ && sleep 30 && \
     rm -f /usr/local/apache2/logs/httpd.pid && \
     /usr/sbin/httpd && sleep 5 && \
-    drush en devel admin_menu token page_load_progress -y && \
+    drush dl ctools && \
+    drush en devel admin_menu token page_load_progress ctools -y && \
     drush dis toolbar -y && \
     mkdir GTG_modules && cd GTG_modules && \
     yum install -y git && \
     git clone https://github.com/statonlab/galaxy_tool_generator.git && \
     drush en -y galaxy_tool_generator galaxy_tool_generator_ui && \
+    rm -rf galaxy_tool_generator
 
 ADD entrypoint.sh /entrypoint.sh
 RUN chmod +x /entrypoint.sh
