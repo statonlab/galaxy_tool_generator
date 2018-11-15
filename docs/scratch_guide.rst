@@ -8,7 +8,7 @@ In this guide, we'll create each piece of the XML, step by step, and show what t
 
 .. note::
 
-	There are many valid XML components in a Galaxy XML file.  To learn more about each individual tool component, please read the `Galaxy documentation <https://docs.galaxyproject.org/en/master/dev/schema.html>`_. 
+	There are many valid XML components in a Galaxy XML file.  To learn more about each individual tool component, please read the `Galaxy documentation <https://docs.galaxyproject.org/en/master/dev/schema.html>`_.
 
 Create Tool XML
 --------------------
@@ -88,7 +88,6 @@ Edit **tool->requirements->requirement** component attributes.
 
 .. image:: /_static/images/tool_requirements_seqtk_attributes.png
 
-
 We've just added the below XML to our tool.
 
 .. code-block:: shell
@@ -96,6 +95,7 @@ We've just added the below XML to our tool.
   <requirements>
           <requirement type="package" version="1.2">seqtk</requirement>
   </requirements>
+
 
 3. Create **tool->command** component
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
@@ -187,7 +187,7 @@ Leave the attributes blank for this component.
 6. Create **tool->tests** component
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-Next we'll create a tests component, which looks like this in XML:
+Next well create a tests component, which looks like this in XML:
 
 .. code-block:: shell
 
@@ -234,6 +234,7 @@ For the attributes, set **Name** to output1 and **File** to 2.fasta
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 Next we'll provide a help component, which looks like this:
+
 .. code-block:: shell
 
   <help><![CDATA[
@@ -268,7 +269,7 @@ Add **tool->help** component labeled help.
 
 For the attributes, paste the below text into the **XML value** field.
 
-.. code-block:: language
+.. code-block:: shell
 
   Usage:   seqtk seq [options] <in.fq>|<in.fa>
   Options: -q INT    mask bases with quality lower than INT [0]
@@ -363,7 +364,7 @@ Below is the XML page.
 
 
 Build the Tool Repository
------------------------
+--------------------------
 
 
 You have just created the ``seqtk_seq_2.xml`` file in GTG. However, this file is not in the ``gtg_dev_dir/galaxy_tool_repository`` directory yet.
