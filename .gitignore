@@ -1,5 +1,5 @@
-/.idea
-/temp
+.idea/
+temp/
 docs/_build/*
 .DS_Store
 gtg_dev_dir/
