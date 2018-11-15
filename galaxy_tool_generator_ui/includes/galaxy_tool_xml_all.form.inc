@@ -167,8 +167,8 @@ function galaxy_tool_xml_all_form($form, &$form_state) {
   $form['selected_xmls'] = [
     '#type' => 'fieldset',
     '#title' => t('XMLs in <code>galaxy_tool_repository</code>'),
-    '#description' => t('Only XMLs in <span style="color: #FF5666">
-        <code>galaxy_tool_repository</code></span> can be published to the Galaxy Tool Shed (or Test Tool Shed).'),
+    '#description' => t('This field shows the XML files in the <span style="color: #FF5666">
+        <code>galaxy_tool_repository</code></span> directory.'),
   ];
   $form['selected_xmls']['xml_list'] = [
     '#markup' => $markup,

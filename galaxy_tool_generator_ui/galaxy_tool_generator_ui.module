@@ -80,17 +80,6 @@ function galaxy_tool_generator_ui_menu() {
     'type' => MENU_NORMAL_ITEM,
     'weight' => 1,
   ];
-  $items['api_keys'] = [
-    'title' => 'API Keys',
-    'description' => t('A page to collect API keys for tool development and testing'),
-    'page callback' => 'api_keys_page',
-    'access arguments' => ['access content'],
-    'menu_name' => 'main-menu',
-    'type' => MENU_NORMAL_ITEM,
-    'file' => 'api_keys.form.inc',
-    'file path' => drupal_get_path('module', 'galaxy_tool_generator_ui') . '/includes',
-    'weight' => 3,
-  ];
   $items['build_tool_repository'] = [
     'title' => 'Build Tool Repository',
     'description' => t('A page to view all Galaxy tool XMLs'),
@@ -100,10 +89,21 @@ function galaxy_tool_generator_ui_menu() {
     'type' => MENU_NORMAL_ITEM,
     'file' => 'galaxy_tool_xml_all.form.inc',
     'file path' => drupal_get_path('module', 'galaxy_tool_generator_ui') . '/includes',
+    'weight' => 3,
+  ];
+  $items['api_keys'] = [
+    'title' => 'Connect to ToolShed',
+    'description' => t('A page to collect API keys for tool development and testing'),
+    'page callback' => 'api_keys_page',
+    'access arguments' => ['access content'],
+    'menu_name' => 'main-menu',
+    'type' => MENU_NORMAL_ITEM,
+    'file' => 'api_keys.form.inc',
+    'file path' => drupal_get_path('module', 'galaxy_tool_generator_ui') . '/includes',
     'weight' => 4,
   ];
   $items['publish_tool_repository'] = [
-    'title' => 'Publish tool repository',
+    'title' => 'Publish Tool Repository',
     'description' => t('A page for publishing tool repository.'),
     'page callback' => 'publish_tool_repository_page',
     //    'access callback' => 'user_is_logged_in',
