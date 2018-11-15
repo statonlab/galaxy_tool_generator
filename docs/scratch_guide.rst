@@ -4,6 +4,12 @@ Start From Scratch
 For comparison with another software for Galaxy tool development `planemo <https://planemo.readthedocs.io/en/latest/>`_, I am going to use `an example <https://planemo.readthedocs.io/en/latest/writing_standalone.html>`_ from the planemo use cases. In this example we are going to use GTG to build this `seqtk_seq_2.xml <https://raw.githubusercontent.com/MingChen0919/gtgdocker/master/seqtk_seq_2.xml>`_ file.
 
 
+In this guide, we'll create each piece of the XML, step by step, and show what the resulting output XML would look like.
+
+.. note::
+
+	There are many valid XML components in a Galaxy XML file.  To learn more about each individual tool component, please read the `Galaxy documentation <https://docs.galaxyproject.org/en/master/dev/schema.html>`_. 
+
 Create Tool XML
 --------------------
 
