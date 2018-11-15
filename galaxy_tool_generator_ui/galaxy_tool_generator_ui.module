@@ -240,11 +240,11 @@ function galaxy_tool_generator_ui_form_webform_node_form_alter(&$form, &$form_st
     '#type' => 'radios',
     '#title' => t('Start with a template XML'),
     '#options' => drupal_map_assoc([
-      'Aurora Galaxy Tool',
+      'From Scratch',
       'Uploaded XML',
-      'From scratch',
+      'Aurora Galaxy Tool',
     ]),
-    '#default_value' => 'Aurora Galaxy Tool',
+    '#default_value' => 'From Scratch',
   ];
 //  $form['rmarkdown_tool_type'] = [
 //    '#type' => 'radios',
