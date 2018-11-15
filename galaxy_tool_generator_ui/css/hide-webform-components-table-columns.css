@@ -11,3 +11,7 @@ table#webform-components td.webform-component-formkey,.webform-component-value,.
 table .tabledrag-hide { 
   display: none;
 }
+
+.page-node-webform-components .tabs.secondary {
+    display: none;
+}
