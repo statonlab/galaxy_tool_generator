@@ -3,6 +3,10 @@ Start From Scratch
 
 For comparison with another software for Galaxy tool development `planemo <https://planemo.readthedocs.io/en/latest/> `_, I am going to use `an example <https://planemo.readthedocs.io/en/latest/writing_standalone.html>`_ from the planemo use cases. In this example we are going to use GTG to build this `seqtk_seq_2.xml <https://raw.githubusercontent.com/MingChen0919/gtgdocker/master/seqtk_seq_2.xml>`_ file.
 
+
+Create Tool XML
+--------------------
+
 0. Initialize an XML
 ~~~~~~~~~~~~~~~~~~~~~
 
@@ -15,9 +19,6 @@ For comparison with another software for Galaxy tool development `planemo <https
 
 1. Create **tool** component, which is the root component.
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-
-
-
 
 .. code-block:: shell
 

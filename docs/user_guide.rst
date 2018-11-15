@@ -31,10 +31,11 @@ Drupal Site
 .. If you want to add the galaxy tool generator to an existing Drupal site....
 
 
+Using Galaxy Tool Generator
+---------------------------
 
-Build Tool XML
----------------
-
+Create Tool XML
+~~~~~~~~~~~~~~~~~
 
 GTG provides three ways to build a Galaxy XML file:
 
@@ -45,11 +46,12 @@ GTG provides three ways to build a Galaxy XML file:
 
 .. image:: /_static/images//create-tool-xml.png
 
+Select the appropriate method and click the **Save** button.
+
 
 .. toctree::
-   :maxdepth: 2
+   :maxdepth: 1
    :caption: Contents:
-
 
    scratch_guide
    other_guide
