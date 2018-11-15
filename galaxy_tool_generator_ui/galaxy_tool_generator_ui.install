@@ -4,6 +4,10 @@
  * implements hook_install().
  */
 function galaxy_tool_generator_ui_install() {
+  // set site front page
+  variable_set('site_frontpage', 'gtg_documentation');
+
+
   //  $menu_link = [
   //    'menu_name' => 'main-menu',
   //    'link_title' => 'Sign In/Up',
@@ -13,8 +17,8 @@ function galaxy_tool_generator_ui_install() {
   //  menu_link_save($menu_link);
   $menu_link = [
     'menu_name' => 'main-menu',
-    'link_title' => 'GTG Flowchart',
-    'link_path' => 'gtg_flowchart',
+    'link_title' => 'GTG Documentation',
+    'link_path' => 'gtg_documentation',
   ];
   menu_link_save($menu_link);
   $menu_link = [
