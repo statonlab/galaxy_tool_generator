@@ -1,0 +1,25 @@
+version: '3'
+
+services:
+  app:
+    image: statonlab/galaxy_tool_generator:latest
+    ports:
+      - "8089:80"
+    volumes:
+      - ./gtg_dev_dir/galaxy_tool_repository:/var/www/html/sites/default/files/galaxy_tool_repository
+      - ./gtg_dev_dir/shed_tools:/var/www/html/sites/default/files/shed_tools
+      - ./galaxy_tool_generator:/var/www/html/sites/all/modules/galaxy_tool_generator/galaxy_tool_generator
+      - ./galaxy_tool_generator_ui:/var/www/html/sites/all/modules/galaxy_tool_generator/galaxy_tool_generator_ui
+    command:
+      - sleep 30
+      - drush en -y galaxy_tool_generator galaxy_tool_generator_ui
+  galaxy:
+    image: 'bgruening/galaxy-stable:17.09'
+    environment:
+      - ENABLE_TTS_INSTALL=True
+      - GALAXY_CONFIG_BRAND=GTG
+    volumes:
+      - ./gtg_dev_dir/shed_tools:/export/shed_tools
+      - ./gtg_dev_dir/database:/export/galaxy-central/database
+    ports:
+      - "8090:80"

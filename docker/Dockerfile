@@ -103,9 +103,10 @@ RUN yum -y update && \
     yum -y install python-devel libxslt-devel libffi-devel openssl-devel && \
 	yum -y install python-pip && \
 	pip install --upgrade setuptools && \
-	pip install planemo
+	pip install planemo && \
+	yum -y install bzip2 && planemo conda_init
 
-## Install php extension to handle yaml file	
+## Install php extension to handle yaml file
 RUN yum install -y php-yaml tree
 
 ## allow exec() function to run planemo as sudoer (https://exain.wordpress.com/2007/11/24/execute-system-commands-via-php/).
@@ -121,17 +122,14 @@ RUN rm -rf /var/lib/pgsql/data/postmaster.pid && \
     sudo -u postgres pg_ctl start -D /var/lib/pgsql/data/ && sleep 30 && \
     rm -f /usr/local/apache2/logs/httpd.pid && \
     /usr/sbin/httpd && sleep 5 && \
-    drush en devel admin_menu token page_load_progress -y && \
+    drush dl ctools && \
+    drush en devel admin_menu token page_load_progress ctools -y && \
     drush dis toolbar -y && \
     mkdir GTG_modules && cd GTG_modules && \
     yum install -y git && \
-    git clone https://github.com/MingChen0919/galaxy_tool_generator.git && \
-    git clone https://github.com/MingChen0919/galaxy_tool_generator_ui.git && \
-    drush en -y galaxy_tool_generator galaxy_tool_generator_ui
-
-
-## Install conda with planemo
-RUN yum -y install bzip2 && planemo conda_init
+    git clone https://github.com/statonlab/galaxy_tool_generator.git && \
+    drush en -y galaxy_tool_generator galaxy_tool_generator_ui && \
+    rm -rf galaxy_tool_generator
 
 ADD entrypoint.sh /entrypoint.sh
 RUN chmod +x /entrypoint.sh
