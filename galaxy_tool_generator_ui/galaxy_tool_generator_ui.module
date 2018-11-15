@@ -123,7 +123,7 @@ function galaxy_tool_generator_ui_menu() {
 function gtg_documentation_page() {
   $page_builder = [
     'gtg_documentation' => [
-      '#markup' => '<iframe height="500" width="100%" "https://galaxy-tool-generator.readthedocs.io" />',
+      '#markup' => '<iframe height="600" width="100%" src="https://galaxy-tool-generator.readthedocs.io" />',
     ],
   ];
 
