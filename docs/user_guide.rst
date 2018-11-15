@@ -50,7 +50,7 @@ Select the appropriate method and click the **Save** button.
 
 
 .. toctree::
-   :maxdepth: 1
+   :maxdepth: 3
    :caption: Contents:
 
    scratch_guide
