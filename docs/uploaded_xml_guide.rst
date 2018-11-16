@@ -2,8 +2,7 @@ Uploaded XML
 ============
 
 GTG allows uploading an existing XML file and building web components upon it. In this section, we will show how to build
-`seqtk_seq_2.xml <https://raw.githubusercontent.com/statonlab/galaxy_tool_generator/master/docker/seqtk_seq_2.xml>`_ from
-`seqtk_seq_1.xml <https://raw.githubusercontent.com/statonlab/galaxy_tool_generator/master/docker/seqtk_seq_1.xml>`_.
+:download:`seqtk_seq_2.xml <example_files/seqtk_seq_2.xml>` from :download:`seqtk_seq_1.xml <example_files/seqtk_seq_1.xml>`.
 
 Upload XML
 ----------

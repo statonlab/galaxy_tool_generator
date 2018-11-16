@@ -1,7 +1,9 @@
 From Scratch
 ============
 
-For comparison with another software for Galaxy tool development `planemo <https://planemo.readthedocs.io/en/latest/>`_, I am going to use `an example <https://planemo.readthedocs.io/en/latest/writing_standalone.html>`_ from the planemo use cases. In this example we are going to use GTG to build this `seqtk_seq_2.xml <https://raw.githubusercontent.com/statonlab/galaxy_tool_generator/master/docker/seqtk_seq_2.xml>`_ file.
+For comparison with another software for Galaxy tool development `planemo <https://planemo.readthedocs.io/en/latest/>`_, I am going to use `an example <https://planemo.readthedocs.io/en/latest/writing_standalone.html>`_ from the planemo use cases. In this example we are going to use GTG to build this :download:`seqtk_seq_2.xml <example_files/seqtk_seq_2.xml>` file.
+
+
 
 
 In this guide, we'll create each piece of the XML, step by step, and show what the resulting output XML would look like.
@@ -349,8 +351,8 @@ For the attributes, select bibtex for the **Title**, and paste the below citatio
 View the complete XML file
 ------------------------------
 
-Now you have created all the components for building the `seqtk_seq_2.xml <https://raw.githubusercontent.com/MingChen0919/gtgdocker/master/seqtk_seq_2.xml>`_ file, you can view the XML page to see how it looks on GTG. Of course, you can view the XML page
-any time you want. It doesn't have to be after you have added all the components.
+Now you have created all the components for building the :download:`seqtk_seq_2.xml <example_files/seqtk_seq_2.xml>` file, you can view the XML page to see how it looks on GTG. Of course, you can view the XML page any time you want. It doesn't have to be after you have added all the components.
+
 
 To view the built XML, click the **VIEW/UPDATE XML** tab from the edit component page.
 
