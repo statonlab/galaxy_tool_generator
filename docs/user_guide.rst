@@ -45,8 +45,8 @@ Select the appropriate method and click the **Save** button.
    :caption: Creating The XML:
 
    scratch_guide
-   aurora_guide
    uploaded_xml_guide
+   aurora_guide
 
 
 
