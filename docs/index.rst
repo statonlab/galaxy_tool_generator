@@ -3,8 +3,8 @@
    You can adapt this file completely to your liking, but it should at least
    contain the root `toctree` directive.
 
-Galaxy Tool Generator!
-=================================================
+Galaxy Tool Generator
+======================
 
 .. toctree::
    :maxdepth: 2
@@ -20,7 +20,6 @@ What is Galaxy Tool Generator (GTG)?
 -------------------------------------
 
 GTG is a `Drupal <https://www.drupal.org/>`_ based web application which enables developing and publishing
-Galaxy tools through web interfaces. This web application consists of two Drupal modules: `galaxy_tool_generator_ui <https://github.com/MingChen0919/galaxy_tool_generator_ui>`_ and `galaxy_tool_generator <https://github.com/MingChen0919/galaxy_tool_generator_ui>`_, and
-depends on the `Drupal webform <https://www.drupal.org/project/webform>`_ module.
+Galaxy tools through web interfaces.  Use the provided docker container to launch a site running tool generator. build your tool, and publish it to the Galaxy Tool Shed!
 
 .. image:: /_static/images/gtg-home.png

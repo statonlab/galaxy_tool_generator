@@ -5,7 +5,7 @@ Requirements
 ------------
 
 
-GTG depends on two Docker images: `statonlab/galaxy_tool_generator` and `bgruening/galaxy-stable:17.09`. First, you need
+GTG depends on two Docker images: ``statonlab/galaxy_tool_generator`` and ``bgruening/galaxy-stable:17.09``. First, you need
 to `install Docker <https://docs.docker.com/install/>`_ in your system. Then, run the following command to get the two images.
 
 .. code-block:: shell
@@ -14,12 +14,8 @@ to `install Docker <https://docs.docker.com/install/>`_ in your system. Then, ru
     docker pull bgruening/galaxy-stable:17.09
 
 
-.. warning::
-
-  This documentation is under active construction and should be completed by November 17th 2018, so please check back then if you can't find what you need.
-
-Launch GTG
------------
+Launch GTG with Docker
+-----------------------
 
 Run the code below to launch GTG. This will start a GTG application at http://127.0.0.1:8089/ and a Galaxy instance at
 http://127.0.0.1:8090/.
@@ -41,4 +37,7 @@ file.
 
 .. image:: /_static/images/docker-compose-yml.png
 
+Building Your Tool
+----------------------
 
+Please see the user guide for detailed instructions on using GTG.
