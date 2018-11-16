@@ -1,7 +1,7 @@
 From Scratch
 ============
 
-For comparison with another software for Galaxy tool development `planemo <https://planemo.readthedocs.io/en/latest/>`_, I am going to use `an example <https://planemo.readthedocs.io/en/latest/writing_standalone.html>`_ from the planemo use cases. In this example we are going to use GTG to build this `seqtk_seq_2.xml <https://raw.githubusercontent.com/MingChen0919/gtgdocker/master/seqtk_seq_2.xml>`_ file.
+For comparison with another software for Galaxy tool development `planemo <https://planemo.readthedocs.io/en/latest/>`_, I am going to use `an example <https://planemo.readthedocs.io/en/latest/writing_standalone.html>`_ from the planemo use cases. In this example we are going to use GTG to build this `seqtk_seq_2.xml <https://raw.githubusercontent.com/statonlab/galaxy_tool_generator/master/docker/seqtk_seq_2.xml>`_ file.
 
 
 In this guide, we'll create each piece of the XML, step by step, and show what the resulting output XML would look like.
@@ -53,7 +53,7 @@ Leave the other fields blank, and click **Save**.
 
 The resulting XML element looks like this:
 
-.. code-block:: shell
+.. code-block:: xml
 
   <tool id="seqtk_seq" name="Convert to FASTA (seqtk)" version="0.1.0">
 
@@ -90,7 +90,7 @@ Edit **tool->requirements->requirement** component attributes.
 
 We've just added the below XML to our tool.
 
-.. code-block:: shell
+.. code-block:: xml
 
   <requirements>
           <requirement type="package" version="1.2">seqtk</requirement>
@@ -102,7 +102,7 @@ We've just added the below XML to our tool.
 
 Next, we will add the below XML block.
 
-.. code-block:: shell
+.. code-block:: xml
 
     <command detect_errors="exit_code"><![CDATA[
         seqtk seq -a '$input1' > '$output1'
@@ -137,7 +137,7 @@ a ``.sh`` file. Put the shell script into this file, and the contents will be au
 
 Net, we will add inputs, resulting in the following XML.
 
-.. code-block:: shell
+.. code-block:: xml
 
       <inputs>
         <param type="data" name="input1" format="fastq" />
@@ -170,7 +170,7 @@ Next, add a component labeled input_data, selecting the  **tool->inputs->param(t
 
 Next, we'll add the below XML.
 
-.. code-block:: shell
+.. code-block:: xml
 
     <outputs>
         <data name="output1" format="fasta" />
@@ -190,7 +190,7 @@ Leave the attributes blank for this component.
 
 Next well create a tests component, which looks like this in XML:
 
-.. code-block:: shell
+.. code-block:: xml
 
       <tests>
         <test>
@@ -199,7 +199,7 @@ Next well create a tests component, which looks like this in XML:
         </test>
     </tests>
 
-Add A tests component of the **tool->tests** component type.
+Add a tests component of the **tool->tests** component type.
 
 .. image:: /_static/images/tool_tests.png
 
@@ -301,7 +301,7 @@ For the attributes, paste the below text into the **XML value** field.
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 Finally, we will create a citation component.
 
-.. code-block:: shell
+.. code-block:: xml
 
   <citations>
           <citation type="bibtex">

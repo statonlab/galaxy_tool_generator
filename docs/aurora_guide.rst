@@ -1,7 +1,6 @@
 Aurora Galaxy Tool
 ===================
 
-More examples
---------------
+.. warning::
 
-* [findSSRs tool](https://github.com/MingChen0919/gtgdocker/blob/master/example_tools/findSRRs/findSRRs.md): an example for developing [Aurora Galaxy Tools](https://github.com/statonlab/aurora-galaxy-tools).
+   Aurora Galaxy Tools isn't published yet! The github repo is `here <https://github.com/statonlab/aurora-galaxy-tools>`_. Follow me on `twitter <https://twitter.com/MingChen0919>`_ for updates and a guide when its out. 
