@@ -1,9 +1,6 @@
 Aurora Galaxy Tool
 ===================
 
-Uploaded XML
-=============
-
 More examples
 --------------
 

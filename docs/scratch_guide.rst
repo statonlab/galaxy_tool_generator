@@ -1,5 +1,5 @@
-Start From Scratch
-===================
+From Scratch
+============
 
 For comparison with another software for Galaxy tool development `planemo <https://planemo.readthedocs.io/en/latest/>`_, I am going to use `an example <https://planemo.readthedocs.io/en/latest/writing_standalone.html>`_ from the planemo use cases. In this example we are going to use GTG to build this `seqtk_seq_2.xml <https://raw.githubusercontent.com/MingChen0919/gtgdocker/master/seqtk_seq_2.xml>`_ file.
 
@@ -10,11 +10,9 @@ In this guide, we'll create each piece of the XML, step by step, and show what t
 
 	There are many valid XML components in a Galaxy XML file.  To learn more about each individual tool component, please read the `Galaxy documentation <https://docs.galaxyproject.org/en/master/dev/schema.html>`_.
 
-Create Tool XML
---------------------
 
-0. Initialize an XML
-~~~~~~~~~~~~~~~~~~~~~
+Initialize an XML
+---------------------
 
 * Click the **Create Tool XML** tab
 * Enter ``seqtk_seq_2.xml`` into **XML file name**
@@ -29,6 +27,7 @@ If successful, you will see the message:  "The new webform ``seqtk_seq_2.xml`` h
 Build The Tool Components
 --------------------------
 After you create the XML file, the XML interface will be open.  To reach it again, click the **Build Tool Repository** tab, and click **edit** for your tool.
+
 
 1. Create the root **tool** component
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
@@ -57,6 +56,7 @@ The resulting XML element looks like this:
 .. code-block:: shell
 
   <tool id="seqtk_seq" name="Convert to FASTA (seqtk)" version="0.1.0">
+
 
 2. Define the tool's requirements
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
@@ -184,6 +184,7 @@ Leave the attributes blank for this component.
 
 .. image:: /_static/images/tool_outputs_attributes.png
 
+
 6. Create **tool->tests** component
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
@@ -229,6 +230,7 @@ Add a **tool->tests->test-output** component labeled output1.
 For the attributes, set **Name** to output1 and **File** to 2.fasta
 
 .. image:: /_static/images/tool_tests_test_output_attributes.png
+
 
 7. Create **tool->help** component
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
@@ -362,72 +364,3 @@ Below is the XML page.
 
 .. image:: /_static/images/xml_page_view.png
 
-
-Build the Tool Repository
---------------------------
-
-
-You have just created the ``seqtk_seq_2.xml`` file in GTG. However, this file is not in the ``gtg_dev_dir/galaxy_tool_repository`` directory yet.
-We need to copy the XML file into it, and any other non-XML files if there are any.
-
-Click the **Build Tool Repository** tab and select any XML files that you want to add to the ``gtg_dev_dir/galaxy_tool_repository`` directory. And then click the **Update XMLs in galaxy_tool_directory folder** button.
-
-.. note::
-
-  This is also the button that you use to add an updated XML to the directory.
-
-.. image:: /_static/images/build_tool_repository.png
-
-You should be able to see the ``seqtk_seq_2.xml`` file in the ``gtg_dev_dir`` directory.
-
-.. image:: /_static/images/gtg_dev_dir.png
-
-
-Add non-XML files
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-
-
-If this tool requires any other non-XML files (for example, test files, scripts, etc.), you can add them directly to the ``gtg_dev_dir/galaxy_tool_repository`` directory.
-
-
-Publish tool to Test ToolShed
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-
-Once we have the XML file(s) and all other non-XML files in the ``gtg_dev_dir/galaxy_tool_repository``, we can publish the tool to Test ToolShed or ToolShed with GTG.
-
-First, we need to add the API key.  Visit the Toolshed documentation to learn more about API keys:  https://docs.galaxyproject.org/en/release_18.05/api/ts_api.html
-
-
-.. image:: /_static/images/api_key.png
-
-Then we can publish the tool through the interface below.
-
-.. image:: /_static/images/publish_tool.png
-
-Install and test Tool in Galaxy
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-
-The next step would be to install and test the tool in the connected Galaxy instance. If the tool needs more work, you can use GTG to update the XML file.
-
-The **Sync to Galaxy** field on the **Build Tool Repository** page is used to link the tool in GTG with the same tool installed in Galaxy so that the update will be automatically synced to Galaxy for testing.
-
-.. image:: /_static/images/sync_tool.png
-
-Every time you update the XML file in Galaxy, you will need to restart Galaxy to integrate the updates. Below is the command to restart Galaxy.
-
-.. code-block:: shell
-
-  docker exec -it gtg_galaxy sh -c 'supervisorctl restart galaxy:'
-
-You should see the following stdout.
-
-.. code-block:: shell
-
-  galaxy:galaxy_nodejs_proxy: stopped
-  galaxy:handler0: stopped
-  galaxy:handler1: stopped
-  galaxy:galaxy_web: stopped
-  galaxy:galaxy_nodejs_proxy: started
-  galaxy:galaxy_web: started
-  galaxy:handler0: started
-  galaxy:handler1: started
