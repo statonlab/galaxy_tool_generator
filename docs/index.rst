@@ -11,6 +11,7 @@ Galaxy Tool Generator
    :caption: Contents:
 
 
+   installation
    quick_start
    user_guide
    developer_guide

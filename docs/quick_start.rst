@@ -1,43 +1,18 @@
 Quick Start Guide
 =================
 
-Requirements
-------------
+.. note::
+
+  Please see our detailed :ref:`usersGuide` for detailed instructions on using GTG.
 
 
-GTG depends on two Docker images: ``statonlab/galaxy_tool_generator`` and ``bgruening/galaxy-stable:17.09``. First, you need
-to `install Docker <https://docs.docker.com/install/>`_ in your system. Then, run the following command to get the two images.
-
-.. code-block:: shell
-
-    docker pull statonlab/galaxy_tool_generator
-    docker pull bgruening/galaxy-stable:17.09
-
-
-Launch GTG with Docker
------------------------
-
-Run the code below to launch GTG. This will start a GTG application at http://127.0.0.1:8089/ and a Galaxy instance at
-http://127.0.0.1:8090/.
-
-.. code-block:: shell
-
-    git clone https://github.com/statonlab/galaxy_tool_generator.git
-    cd galaxy_tool_generator && docker-compose up -d
-
-To shut down GTG and the Galaxy containers:
-
-.. code-block:: shell
-
-    docker-compose down
-
-
-If you want to run GTG and the Galaxy containers at different ports, you can edit the port numbers in the `docker-compose.yml`
-file.
-
-.. image:: /_static/images/docker-compose-yml.png
-
-Building Your Tool
-----------------------
-
-Please see the user guide for detailed instructions on using GTG.
+* Open the GTG web interface.
+* Use the **Create Tool XML** tab to start your XML file.
+* Click *edit* for the XML file under the **Build Tool Repository** tab.
+* Add XML components and set their attributes.
+* Press the **Update XMLs in galaxy_tool_directory folder** button in the **Build Tool Repository** tab to add the finished XML to the repository.
+* Add any additional files to the ``gtg_dev_dir/galaxy_tool_repository`` folder.
+* Connect GTG to the Galaxy Toolshed in the **Connect to ToolShed** tab.
+* Publish to the Test Toolshed in the **Publish Tool Repository** tab.
+* Install and test your published tool in the local Galaxy container using the **Sync to Galaxy** field in the **Build Tool Repository** tab, providing the path relative to the ``shed_tools`` directory.
+* Restart Galaxy to integrate the changes:  ``docker exec -it gtg_galaxy sh -c 'supervisorctl restart galaxy:'``

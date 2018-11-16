@@ -1,3 +1,5 @@
+.. _UsersGuide:
+
 User's Guide
 ============
 
