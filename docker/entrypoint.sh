@@ -8,7 +8,7 @@ echo "Starting Galaxy Tool Generator..."
 sleep 10
 
 echo "Clearing cache"
-drush cc all
+drush cc all &
 
 ## start apache
 rm -f /usr/local/apache2/logs/httpd.pid
