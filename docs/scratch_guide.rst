@@ -363,4 +363,3 @@ To view the built XML, click the **VIEW/UPDATE XML** tab from the edit component
 Below is the XML page.
 
 .. image:: /_static/images/xml_page_view.png
-

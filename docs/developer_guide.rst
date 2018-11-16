@@ -2,8 +2,8 @@ Developer Guide
 ================
 
 
-**Galaxy Tool Generator** consists of two Drupal modules: `galaxy_tool_generator_ui` and `galaxy_tool_generator`. The
-`galaxy_tool_generator_ui` is responsible for the UI design of the web application. The `galaxy_tool_generator`
+**Galaxy Tool Generator** consists of two Drupal modules: ``galaxy_tool_generator_ui`` and ``galaxy_tool_generator``. The
+``galaxy_tool_generator_ui`` is responsible for the UI design of the web application. The ``galaxy_tool_generator``
 creates a list of web form components that map to the Galaxy Tool XML components defined
 `here <https://docs.galaxyproject.org/en/release_18.09/dev/schema.html>`_.
 Developers can contribute to this application by creating new web form components for
