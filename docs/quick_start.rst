@@ -8,8 +8,7 @@ Quick Start Guide
 
 * Open the GTG web interface.
 * Use the **Create Tool XML** tab to start your XML file.
-* Click *edit* for the XML file under the **Build Tool Repository** tab.
-* Add XML components and set their attributes.
+* Add XML components and set their attributes. 
 * Press the **Update XMLs in galaxy_tool_directory folder** button in the **Build Tool Repository** tab to add the finished XML to the repository.
 * Add any additional files to the ``gtg_dev_dir/galaxy_tool_repository`` folder.
 * Connect GTG to the Galaxy Toolshed in the **Connect to ToolShed** tab.
