@@ -129,7 +129,7 @@ Enter the below attributes for this component:
 
 The **XML value** field in the above web form is used to collect the shell script for the command section. However,
 there is an easier way to input a shell script into the tool XML file. Go to the ``gtg_dev_dir/galaxy_tool_repository`` and create
-a ``.sh`` file. Put the shell script into this file, and the contents will be automatically integrated into the web form field when the XML webform page is being viewed (see the image below). The ``.sh`` file should have exactly the same base name as the XML file. In this example, the XML file is ``seqtk_seq_2.xml``, so the ``.sh`` file should be ``seqtk_seq_2.xml``.
+a ``.sh`` file. Put the shell script into this file, and the contents will be automatically integrated into the web form field when the XML webform page is being viewed (see the image below). The ``.sh`` file should have exactly the same base name as the XML file. In this example, the XML file is ``seqtk_seq_2.xml``, so the ``.sh`` file should be ``seqtk_seq_2.sh``.
 
 .. image:: /_static/images/view_update_xml.png
 
