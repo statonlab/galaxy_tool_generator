@@ -712,6 +712,10 @@ function galaxy_tool_generator_form_webform_components_form_alter(&$form, &$form
 
 
 
+  // add a link to galaxy XML documentation next to component selection field
+  $form['add']['type']['#field_suffix'] = l('Help',
+    'https://docs.galaxyproject.org/en/latest/dev/schema.html',
+    ['attributes' => ['target' => '_blank']]);
 }
 
 
