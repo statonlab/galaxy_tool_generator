@@ -622,7 +622,34 @@ function galaxy_tool_generator_form_webform_component_edit_form_alter(&$form, &$
       edit_component_tool_citations_citation($form);
       break;
   }
+
+  $form['#submit'][] = 'update_xml_file_after_component_updating';
 }
+
+
+/**
+ * submit callback function from webform_component_edit_form form.
+ * aims at updating xml file after each component updating.
+ */
+function update_xml_file_after_component_updating($form, &$form_state) {
+  $node = $form['#node'];
+
+  create_xml_file_from_webform_node($node);
+}
+
+
+/**
+ * @param $node
+ * @param $view_mode
+ * @param $langcode
+ *
+ * implement hook_node_view
+ *
+ */
+function galaxy_tool_generator_node_view($node, $view_mode, $langcode) {
+  create_xml_file_from_webform_node($node);
+}
+
 
 /**
  * Implements hook_form_alter().

@@ -357,3 +357,46 @@ function edit_component_form_fields_default_value(&$form) {
     }
   }
 }
+
+
+/**
+ * $param $node a webform node
+ */
+function create_xml_file_from_webform_node ($node) {
+
+  if (!isset($node->webform)) {
+    return;
+  }
+  // get galaxy tool xml file name;
+  $query = db_select('node', 'n')
+    ->fields('n')
+    ->condition('nid', $node->nid, '=')
+    ->execute()
+    ->fetchAssoc();
+
+  // if tool_command.sh exists, replace tool command text value with content from tool_command.sh
+  // tool_command.sh = 'public://galaxy_tool_repository/tool_command.sh'
+  if (isset($node->webform)) {
+    get_tool_command_string_from_sh($node);
+  }
+
+  // create a directory to store all galaxy tool xml files
+  $galaxy_tool_xml_dir = 'public://galaxy_tool_XMLs';
+  file_prepare_directory($galaxy_tool_xml_dir, FILE_CREATE_DIRECTORY);
+  // write xml components into xml file.
+  $xml_file_path = $galaxy_tool_xml_dir . '/' . $query['galaxy_tool_xml_name'];
+
+  $xml = build_galaxy_tool_xml($node->webform['components']);
+  // remove version tag from xml string
+  $xml_no_version_tag = str_replace("<?xml version=\"1.0\"?>\n", '', $xml);
+  // save xml string to a file and create a database entry
+  $file = file_save_data($xml_no_version_tag, $xml_file_path, FILE_EXISTS_REPLACE);
+  // insert xml file info into node table
+  db_update('node')
+    ->fields([
+      'tool_xml_fid' => $file->fid,
+      'tool_xml_uri' => $file->uri,
+    ])
+    ->condition('nid', $node->nid)
+    ->execute();
+}
