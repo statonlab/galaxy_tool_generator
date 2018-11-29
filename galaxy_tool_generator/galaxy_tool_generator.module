@@ -680,6 +680,20 @@ function galaxy_tool_generator_form_webform_components_form_alter(&$form, &$form
   // update component type options
   $form['add']['type']['#options'] = $webform_component_types;
 
+  // add a submit function to handle page redirection after submitting webform.
+  $form['#submit'][] = 'redirect_to_webform_node_page';
+
+
+
+}
+
+
+/**
+ * submit function used to redirect to webform node page after submitting webform.
+ */
+function redirect_to_webform_node_page(&$form, &$form_state) {
+  // redirect to the webform content page. this is necessary for creating the XML file.
+  $form_state['redirect'] = 'node/' . $form['#node']->nid;
 }
 
 
