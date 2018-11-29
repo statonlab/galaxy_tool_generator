@@ -57,6 +57,9 @@ The **tool->tests** component
 
 Add a tests component of the **tool->tests** component type and drag it to the correct location.
 
+The component ``tool->test`` is a subcomponent of the component ``tool``. It needs to be placed under ``tool`` and at the same level as other components like ``tool->requirements``, ``tool->command``, ``tool->inputs``, ``tool->outputs``, and ``tool->help``. You can drag a component to arrange its location. **All subcomponents needs to be correctly placed under their parent components.**
+
+
 .. image:: /_static/images/upload_tool_tests.png
 
 There are no attributes to choose.
