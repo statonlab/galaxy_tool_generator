@@ -65,6 +65,9 @@ The resulting XML element looks like this:
 
 Add **tool->requirements** component
 
+The component ``tool->requirements`` is a subcomponent of the component ``tool``, it needs to be placed under ``tool``. You can drag a component to arrange its location. **All subcomponents needs to be correctly placed under their parent components.**
+
+
 .. image:: /_static/images/tool_requirements.png
 
 Set the label to **requirements** and choose **tool->requirements** from the select box under **Operations**.
